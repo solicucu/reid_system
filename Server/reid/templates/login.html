@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+{% block style %}
+    <style>
+        .loginbox {
+            position: absolute;
+            top:150px;
+            right: 100px;
+            border:2px solid white;
+            width:250px;
+            height:240px;
+            padding: 5px 30px 10px 10px;
+            border-radius: 10px;
+        }
+        .boxtitle {
+            font-size: 20px;
+        }
+        a {
+            color: white;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .submit {
+            width: 212px;
+            height: 27px;
+            background-color: deepskyblue;
+            border-width: 0;
+            border-radius:5px;
+        }
+
+
+    </style>
+{% endblock %}
+{% block datacenter %}
+    数据中心
+{% endblock %}
+{% block reid %}
+    ReID
+{% endblock %}
+{% block main %}
+     <div class = "loginbox" style="text-align: center" >
+        <form action = "/reid/login/" method = "post">
+             {% csrf_token %}
+            <p class="boxtitle"> 用户登陆 </p>
+            <p>
+                <label for = 'nid'>姓名: </label><input type = "text" name = "name" id = "nid">
+            </p>
+             <p>
+                <label for = 'pid'>密码: </label><input type = "password" name = "password" id = "pid">
+            </p>
+            <p style="text-align: right">
+                <a href = "/reid/register/">没有账号,马上注册</a>&emsp;
+            </p>
+            <div>
+                <input class="submit" type = "submit" value = "登 陆">
+            </div>
+            {% if error is not None %}
+            <span style = "color: red; position: relative; top:5px">{{ error }}</span>
+            {% endif %}
+
+        </form>
+    </div>
+{% endblock %}

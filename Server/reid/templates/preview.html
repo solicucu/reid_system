@@ -1,0 +1,76 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block title %} 数据预览 {% endblock %}
+{% block login %}欢迎您:<a href="/reid/usercenter/"> {{ name }}</a>{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'preview.css' %}">
+    <script type="text/javascript" src = "https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        var global_number = 0; // 全局变量
+        function preview() {
+            // 我用类选择器
+            var token = $("input[name = 'csrfmiddlewaretoken']").val();
+            var dataset = $(".dataset").val();
+            var dirname = $(".dirname").val();
+            global_number = 1;
+            $.post("/reid/preview/", {"dataset":dataset,"dirname":dirname,"num":global_number,"csrfmiddlewaretoken": token}, function (result) {
+                if (!result.error){
+                    imgpath = result.image;
+                    path = "/data/" + imgpath;
+                    $(".image").attr("src", path);
+                }
+            })
+        }
+        function prev_next(num) {
+            var token = $("input[name = 'csrfmiddlewaretoken']").val();
+            var dataset = $(".dataset").val();
+            var dirname = $(".dirname").val();
+            global_number = global_number + num;
+
+            $.post("/reid/preview/", {"dataset":dataset,"dirname":dirname,"num":global_number,"csrfmiddlewaretoken": token}, function (result) {
+                if (!result.error){
+                    imgpath = result.image;
+                    new_num = Number(result.num);
+                    if (global_number !== new_num){
+                        global_number = new_num;
+                        alert("it is end")
+                    }
+                    path = "/data/" + imgpath;
+                    $(".image").attr("src", path);
+                }
+            })
+        }
+    </script>
+{% endblock %}
+{% block main %}
+    <div class="viewbox">
+        <div class="title">
+            数据预览
+        </div>
+        <div class="selects">
+            <form action = "/reid/preview/" method="post">
+                {% csrf_token %}
+                <select name = "dataset" class="dataset">
+                    {% for name in datasets %}
+                        <option value="{{ name }}"> {{ name }}</option>
+                    {% endfor %}
+                </select>
+                <select name = "dir" class="dirname">
+                    {% for dir in dirs %}
+                        <option value="{{ dir }}"> {{ dir }}</option>
+                    {% endfor %}
+                </select>
+                <input type="button" value="预 览" onclick="preview()">
+            </form>
+        </div>
+        <div class = "lefticon">
+            <img src = "{% static 'left.jpg' %}" onclick="prev_next(-1)">
+        </div>
+        <div class = "imagebox">
+            <img class= "image" src = "/data/{{ image }}">
+        </div>
+        <div class="righticon">
+            <img src = "{%  static 'right.jpg' %}" onclick="prev_next(1)">
+        </div>
+    </div>
+{% endblock %}

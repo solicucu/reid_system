@@ -1,0 +1,85 @@
+{% extends 'usercenter.html' %}
+{% block title %}密码修改{% endblock %}
+{% block head %}
+    <style>
+        .box {
+            position: absolute;
+            top:170px;
+            left:480px;
+
+            width: 300px;
+            height: 280px;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+        .boxtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid white;
+            padding-bottom: 15px;
+        }
+        .submit {
+            width: 226px;
+            height: 27px;
+            margin-top: 20px;
+            background-color: deepskyblue;
+            border-width: 0;
+            border-radius:5px;
+        }
+        .hint {
+            position: relative;
+            top: 20px;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function checkPassword() {
+
+            var pwd = $("#new").val();
+            reg = new RegExp('^[0-9a-zA-Z]{6,12}$');
+            if (pwd.length === 0) {
+               $('#hint').html("新密码不能为空");
+            } else if (reg.test(pwd)) {
+               $('#hint').html("");
+               return true
+            } else {
+                $('#hint').html("* 密码只能由6-12个数字字母组合")
+            }
+        }
+        function changepwd() {
+            res = checkPassword();
+            if (res){
+                var token = $("input[name = 'csrfmiddlewaretoken']").val();
+                var old_password = $("#old").val();
+                var new_password = $("#new").val();
+                $.post("/reid/usercenter/changepwd/",
+                    {"old":old_password, "new":new_password,"csrfmiddlewaretoken": token}
+                    , function (result) {
+                    //return a hint
+                    hint = result.hint;
+                    $("#hint").html(hint)
+                })
+            }
+        }
+    </script>
+{% endblock %}
+{% block right %}
+    <div class="box">
+        <form action = "/reid/usercenter/changepwd/" method = "post">
+             {% csrf_token %}
+            <p class="boxtitle"> 密码修改 </p>
+            <p>
+                <label for = 'old'>原密码: </label><input type = "password" name = "old_password" id = "old">
+            </p>
+             <p>
+                <label for = 'new'>新密码: </label><input type = "password" name = "new_password" id = "new" onblur="checkPassword()">
+            </p>
+            <div>
+                <input class="submit" type = "button" value = "提 交" onclick="changepwd()">
+            </div>
+            <label class="hint" id = "hint"> </label>
+        </form>
+    </div>
+{% endblock %}

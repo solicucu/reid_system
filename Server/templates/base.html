@@ -1,0 +1,62 @@
+{% load  staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}base{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'head.css' %}">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 预留给子类引入自己相应的css文件 -->
+    {% block head %}{% endblock %}
+    <!-- 预留空间给子类定义自己的 style -->
+    {% block style %}{% endblock %}
+</head>
+    <!-- 背景图片单独放在这里处理 -->
+    <body style="background-image: url('{% static 'scatter.jpg' %}')">
+        <div class = "head">
+            <div class="logo"> Logo </div>
+            <div class="item">
+                {% block datacenter %}
+                    <div class="dcenter">
+                        <div class="select_box">
+                            <span class="dt">数据中心</span>
+                        </div>
+                        <ul class="option_box">
+                            <li class="option"><a href="/reid/upload/">数据上传</a></li>
+                            <li class="option"><a href="/reid/preview/">数据预览</a></li>
+                        </ul>
+                    </div>
+                {% endblock %}
+            </div>
+            <div class="item"> {%  block reid %} <a href="/reid/fastreid/"> ReID </a>{% endblock %} </div>
+            <div class="login"> {% block login %} <a href="/reid/login/">登录</a> {% endblock %} </div>
+        </div>
+        <!-- 神奇果然要放在body才行-->
+        <script>
+         $(".dcenter").click(function () {
+            {#event.stopPropagation(); fadetoggle 参数表示切入或切出的速度#}
+            $(this).children(".option_box").fadeToggle(200);
+         });
+        {# 设置文本#}
+        {#$(".dcenter").on("click", ".option", function () {#}
+        {#    $(this).parent().siblings(".select_box").find(".dt").text($(this).text())#}
+        {#\});#}
+        {#好像没什么用#}
+        {#$(document).click(function () {#}
+        {#    $(".option_box").fadeOut();#}
+        {#\});#}
+        </script>
+        <div>
+            {% block main %}
+            <p class="welcome">
+                欢迎使用 Fast ReID 系统 ~
+            </p>
+            {% endblock %}
+        </div>
+        <div>
+            {% include 'bottom.html' %}
+        </div>
+    </body>
+</html>

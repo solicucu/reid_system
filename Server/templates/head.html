@@ -1,0 +1,11 @@
+{% load staticfiles %}
+<head>
+   <title></title>
+   <link rel="stylesheet" href="{% static 'head.css'%}">
+</head>
+<div class="head">
+    <div class="logo"> Logo </div>
+    <div class="item"> 数据中心 </div>
+    <div class="item"> ReID </div>
+    <div class="login"> {% block login %} <a href="/reid/login/">登录</a> {% endblock %} </div>
+</div>

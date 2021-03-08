@@ -1,0 +1,8 @@
+<!-- 继承base 页面 -->
+{%  extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block login %}欢迎您:<a href="/reid/usercenter/"> {{ name }}</a>{% endblock %}
+
+{% block reid %}
+    <a href = "/reid/fastreid/">ReID</a>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% load  staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src = "https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+
+        function getAjax() {
+            //$ 表示jquery的意思，get 方法三个参数，（路由，参数json格式，回调函数：后端返回结果后调用）
+            // ajax 默认是异步的
+            $.get('/reid/getajax/',{"username":"hanjun"}, function(res){
+                //alert(res.flag) 两者都行
+                alert(res['flag']);
+            })
+            //alert("hellojun") 这句话不需要等待上面的语句
+            // 如果是post的话，那么需要加上csrf_token参数 选择器获取值
+            //var token = $("input[name = 'csrfmiddlewaretoken']").val();
+            //$.post('reid/postajax/',{"username":"hanjun", "csrfmiddlewaretoken": token}, function(res){
+            //    alert(res['flag'])
+            //})
+        }
+        //自定义ajax
+        function selfgetAjax() {
+            $.ajax(
+                //传一个json格式的数据
+                {
+                    async:false, // 是否为异步
+                    url:"/reid/getajax/", // 请求路径
+                    type:"GET", // 请求方式
+                    data:{"username":"hanjun"}, // 待传数据
+                    success: function (res) { // 回调函数
+                        alert(res['flag'])
+                    }
+                }
+            )
+
+        }
+        function change() {
+            var value = $("#imagename").val(); // 获取值
+            $("#imagename").html("hello hanjun"); // 设置内容
+            $("#imagename").css("color", "red");//设置css,(name, value)
+            $("#img").attr("src", "/data/tree.jpg") // 修改特定的属性
+            //$('#test').val(); 获取select选中的值
+        }
+    </script>
+</head>
+<body>
+    <p> hello solicucu</p>
+    <div id = "imagename">need to change</div>
+    <img id = "img" src = "/data/scatter.jpg">
+    <input type="button" value = "getajax" onclick="getAjax()">
+    <input type="button" value=" selfdefine ajax" onclick="selfgetAjax()">
+    <input type="button" value="change" onclick="change()">
+    <!--<img src="/data/hanjun/market10/gallery/0001_c6s2_112243_00.jpg"> -->
+    <!-- <img src="/static/scatter.jpg">  硬编码 -->
+    <!-- <img src="{% static 'scatter.jpg' %}">  软编码-->
+</body>
+</html>

@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} ReID {% endblock %}
+{% block login %}欢迎您:<a href="/reid/usercenter/"> {{ name }}</a>{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href = "{% static 'fastreid.css' %}">
+    <script type="text/javascript" src = "https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        var global_number = 0; // 全局变量
+        function selects() {
+            // 我用类选择器
+            var token = $("input[name = 'csrfmiddlewaretoken']").val();
+            var dataset = $("#dataset").val();
+            var modeltype = $("#modeltype").val();
+            var ranktype = $("#ranktype").val();
+            global_number = 1;
+            $.post("/reid/fastreid/", {"type":"select","dataset":dataset,"modeltype":modeltype,"ranktype":ranktype ,"csrfmiddlewaretoken": token}, function (result) {
+
+                imgpath = result.image;
+                path = "/data/" + imgpath;
+                $("#qimage").attr("src", path);
+            })
+        }
+        function prev_next(num) {
+            var token = $("input[name = 'csrfmiddlewaretoken']").val();
+            var dataset = $("#dataset").val();
+            global_number = global_number + num;
+
+            $.post("/reid/fastreid/", {"type":"prev_next","dataset":dataset,"num":global_number,"csrfmiddlewaretoken": token}, function (result) {
+
+                imgpath = result.image;
+                new_num = Number(result.num);
+                if (global_number !== new_num){
+                    global_number = new_num;
+                    alert("it is end")
+                }
+                path = "/data/" + imgpath;
+                $("#qimage").attr("src", path);
+            })
+        }
+        function  query() {
+            var token = $("input[name = 'csrfmiddlewaretoken']").val();
+            var dataset = $("#dataset").val();
+            var modeltype = $("#modeltype").val();
+            var imagepath = $("#qimage")[0].src;
+            //http://127.0.0.1:8000/data/hanjun/market10/query/0001_c1s1_001051_00.jpg
+            //alert(imagepath)
+            var ranktype = $('#ranktype').val();
+            data = {
+                "type":"query",
+                "dataset":dataset,
+                "modeltype":modeltype,
+                "imagepath":imagepath,
+                "ranktype": ranktype,
+                "csrfmiddlewaretoken": token,
+            };
+            $.post("/reid/fastreid/", data, function (result) {
+                images = result.images;
+                labels = result.labels;
+                cost = result.cost;
+
+                for(var i = 0; i < images.length; i++){
+                    itemname = "#gitem" + i;
+                    $(itemname).css("display","block");
+                    idname = "#G" + i ;
+                    idlabel = "#L" + i ;
+                    $(idname).attr("src", "/data/"+images[i]);
+                    $(idlabel).html(labels[i]);
+                    if (labels[i] === '√'){
+                        $(idlabel).css("color","green");
+                    }else {
+                        $(idlabel).css("color","red");
+                    }
+                }
+                if (images.length === 1){
+                    for(var i = 1; i< 5; i++){
+                        itemname = "#gitem" + i;
+                        $(itemname).css("display","none");
+                    }
+                }
+                $("#time").html("time-consume: " + cost + " s")
+            })
+        }
+
+    </script>
+    <style>
+    .cost {
+        position: relative;
+        top:45px;
+    }
+    </style>
+{% endblock %}
+{% block main %}
+    <div class="main">
+        <div class="title"> ReID </div>
+        <div class="selects">
+            <select name = "modeltype" id = "modeltype">
+                <option value="mobilenetv2x2">mobilenetv2</option>
+                <option value="shufflenetv2x2">shufflenetv2</option>
+                <option value="ssnetv4">ssnetv4</option>
+            </select>
+            <select name = "dataset" id = "dataset">
+                {% for d in datasets %}
+                    <option value="{{ d }}">{{ d }}</option>
+                {% endfor %}
+            </select>
+            <select name = "ranktype" id = "ranktype">
+                <option value="rank-1">rank-1</option>
+                <option value="rank-5">rank-5</option>
+            </select>
+            {% csrf_token %}
+            <input type="button" value="确 定" onclick="selects()">
+        </div>
+        <div class="viewbox">
+            <img class="lefticon" src="{% static 'left.jpg' %}" onclick="prev_next(-1)">
+            <div class="querybox">
+                <div class="imagebox"><img class = "images" id = "qimage" src=""></div>
+                <label class="qlabel" onclick="query()">query</label>
+            </div>
+            <img class="righticon" src="{% static 'right.jpg' %}" onclick="prev_next(1)">
+            <div class="gallerybox">
+                {% for i in num %}
+                    <div class = "gitem" id = "gitem{{ i }}">
+                        <div class="imagebox">
+                            <img class="images" id = "G{{ i }}" src = "">
+                        </div>
+                        <label class="labels" id = "L{{ i }}"></label>
+                    </div>
+                {% endfor %}
+            </div>
+            <span class="cost" id="time"> time-consume</span>
+        </div>
+
+    </div>
+{% endblock %}

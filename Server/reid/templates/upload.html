@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %} 数据上传 {% endblock %}
+{% block login %}欢迎您:<a href="/reid/usercenter/"> {{ name }}</a>{% endblock %}
+{% block style %}
+   <style>
+        .uploadbox {
+            width: 345px;
+            height: 350px;
+
+            position: relative;
+            top: 80px;
+            left: 470px;
+
+            border:2px solid white;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .title {
+            height: 30px;
+            font-size: 20px;
+            border-bottom: 1px solid white;
+            text-align: center;
+            margin: 5px 5px 10px 5px;
+        }
+        .content {
+            text-align: left;
+            padding-left: 30px;
+        }
+        .uploadbox input {
+            background-color: deepskyblue;
+            border-width: 0;
+            border-radius:5px;
+            width:255px;
+            height: 26px;
+            color:white;
+            font-size:16px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+   </style>
+{% endblock%}
+{% block main %}
+    <div class="uploadbox">
+        <div class="title"> 数据上传 </div>
+        <div class="content">
+            <h4>Notice: 请保证文件夹如下(限zip压缩文件)</h4>
+            <ul style="padding-left: 20px">
+                <li>dataname/: 数据集名</li>
+                <li>dataname/query/: 查询图片</li>
+                <li>dataname/gallery/: 候选库图片</li>
+            </ul>
+            <br>
+            <form action="/reid/upload/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="filename">
+                <p>
+                    <input type="submit" value="立刻上传">
+                </p>
+            </form>
+            {% if info is not None %}
+            <p style="padding-left: 90px">{{ info }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

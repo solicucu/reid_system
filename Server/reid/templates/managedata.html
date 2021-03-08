@@ -1,0 +1,54 @@
+{% extends 'usercenter.html' %}
+{% block title %}数据管理{% endblock %}
+{% block head %}
+    <style>
+        .box {
+            position: absolute;
+            top:170px;
+            left:480px;
+
+            width: 300px;
+
+            border: 2px solid white;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+        .boxtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid white;
+            padding-bottom: 15px;
+        }
+        .selects {
+            text-align: left;
+            margin-left: 40px;
+        }
+        .submit {
+            width: 226px;
+            height: 27px;
+            margin-top: 20px;
+            background-color: deepskyblue;
+            border-width: 0;
+            border-radius:5px;
+            color: white;
+            font-size: 15px;
+            margin-bottom: 40px;
+        }
+    </style>
+{% endblock %}
+
+{% block right %}
+    <div class="box">
+        <form action = "/reid/usercenter/managedata/" method = "post">
+             {% csrf_token %}
+            <p class="boxtitle"> 删除数据 </p>
+            <div class = "selects">
+                {% for d in datasets %}
+                    <p><input type="checkbox" name = "deldatasets" value="{{ d }}">&emsp;{{ d }}</p>
+                {% endfor %}
+            </div>
+            <input class = "submit" type="submit" value="提 交">
+        </form>
+    </div>
+{% endblock %}

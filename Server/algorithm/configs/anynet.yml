@@ -1,0 +1,92 @@
+MODEL:
+  # DEVICE: 'cpu'
+  NAME: 'mobilenetv2'
+  NAME: 'ssnet'
+  # PRETRAIN_PATH: '/home/share/solicucu/data/ReID/MobileNetReID/ssnet/market1501/checkpoints/ssnetv4_neck_dw_imagenet43_bn_ws_wd0005_e160/'
+  IMAGENET_CKPT: '/home/share/solicucu/data/ReID/MobileNetReID/imagenet/checkpoints/ssnetv4_fa_kc_wd0005/best_ckpt43.pth'
+  # IMAGENET_CKPT: '/home/share/solicucu/data/ReID/MobileNetReID/imagenet/checkpoints/mobilenetv2x2_kc/best_ckpt.pth'
+  USE_BNNECK: True
+  WIDTH_MULT: 2. 
+  IMAGENET: False
+  PARALLEL: False 
+  BEFORE_GAP: True 
+  NECK: True
+  PCB_NECK: False
+  MID_PLANES: 256
+
+TRICKS:
+  LABEL_SMOOTH: True
+  LAST_STRIDE: 2
+  DROPOUT: 0.5
+
+DATASET:
+  # NAME: 'dukemtmc'
+  NAME: 'market1501'
+
+DATA:
+  IMAGE_SIZE: [256,128]
+  HF_PROB: 0.5
+  RE_PROB: 0.5
+  MEAN: [0.485, 0.456, 0.406]
+  STD: [0.229, 0.224, 0.225]
+  PADDING: 10
+
+DATALOADER:
+  NUM_WORKERS: 4
+  SAMPLER: 'triplet'
+  NUM_INSTANCE: 4
+
+SOLVER:
+  MAX_EPOCHS: 160
+  END_EPOCH: 160
+  IMGS_PER_BATCH: 64
+
+  BASE_LR: 0.015
+  # BASE_LR: 0.025
+  # LR_LIST: [1.5e-2, 1.5e-3, 1.5e-4]
+  # MILESTONES: [150, 225]
+  # BASE_LR: 3.5e-4
+  LR_DECAY_PERIOD: 40
+  LR_DECAY_FACTOR: 0.1
+  LR_SCHEDULER_NAME: "WarmupCosAnnLR"
+  # LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  LR_MIN: 0.0001
+  # LR_MIN: 0.001
+
+  WARMUP_ITERS: 10
+  WARMUP_FACTOR: 1.0
+  GAMA: 0.1
+
+  OPTIMIZER_NAME: "SGD"
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.003
+  # WEIGHT_DECAY: 0.0005
+
+  LOSS_NAME: "softmax_triplet"
+  TRI_MARGIN: 0.3
+
+TEST:
+  IMGS_PER_BATCH: 128
+  FEAT_NORM: 'yes'
+  BEST_CKPT: "best_ckpt.pth"
+
+OUTPUT:
+  # ROOT_DIR: "/home/share/solicucu/data/ReID/MobileNetReID/mobilenetv2/market1501/"
+  ROOT_DIR: "/home/share/solicucu/data/ReID/MobileNetReID/ssnet/market1501/"
+  # CKPT_DIR: "checkpoints/x2_imagenet68_neck_dw_ff_kc_bn_ws_wd003_e160_2/"
+  CKPT_DIR: "checkpoints/ssnetv4_imagenet43_neck_dw_ff_fa_kc_bn_ws_wd0005_drop05_e160/"
+  LOG_PERIOD: 10
+  # LOG_NAME: 'log_mobilenetv2x2_imagenet68_neck_dw_ff_kc_bn_ws_wd003_e160_2.txt'
+  LOG_NAME: 'log_ssnetv4_imagenet43_neck_dw_ff_fa_kc_bn_ws_wd0005_drop05_e160.txt'
+  CHECKPOINT_PERIOD: 20
+  EVAL_PERIOD: 20
+
+DARTS:
+  IN_PLANES: 60
+  LAYERS: [3, 4, 6, 3]
+  GENOTYPE: 'v4_best_genotype.json'
+  CKPT_NAME: 'best_ckpt_fit.pth'
+  PRETRAINED: False
+  GRAD_CLIP: 5.
+  MULTIPLIER: 2
+  USE_ATTENTION: True

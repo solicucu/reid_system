@@ -1,0 +1,62 @@
+{% extends 'usercenter.html' %}
+{% block title %}模型性能{% endblock %}
+{% block head %}
+    <style>
+        .box {
+            width: 900px;
+            height: 450px;
+            position: absolute;
+            left:250px;
+            top:120px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .box img {
+            position: relative;
+            top:10px;
+            width: 880px;
+            height: 430px;
+        }
+        .selects {
+            position: absolute;
+            left: 450px;
+            top:60px;
+            float: left;
+            width: 500px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .selects li {
+            float: left;
+            background-color: white;
+            opacity: 0.5;
+            color: black;
+            padding:10px 30px 11px 30px;
+        }
+        .selects li:hover {
+            background-color: purple;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript" src = "https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function show(name) {
+            path = "/data/performance/" + name + ".png";
+            $("#image").attr("src", path)
+        }
+    </script>
+{% endblock %}
+{% block right %}
+    <ul class = "selects">
+        <li onclick="show('PPL')">PPL</li>
+        <li onclick="show('atten')">Attention</li>
+        <li onclick="show('tricks')">Tricks</li>
+        <li onclick="show('pretrained')">Pretrained</li>
+    </ul>
+    <div class = "box">
+        <img id = "image" src = "/data/performance/PPL.png">
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} 用户中心 {% endblock %}
+{% block login %}欢迎您:<a href="/reid/usercenter/"> {{ name }}</a>{% endblock %}
+{% block style %}
+    <style>
+        .left{
+            position: relative;
+            top:-15px;
+            width: 100px;
+            height: 600px;
+            text-align: center;
+            margin-top: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 2px;
+            padding-top: 20px;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        .left:hover {
+            background-color: #1C1C1C;
+        }
+        li a:hover {
+            color: blue;
+        }
+    </style>
+{% endblock %}
+{% block main %}
+    <div>
+        <div class = "left">
+            <ul>
+                <li><a href="/reid/usercenter/changepwd/">密码修改</a></li>
+                <li><a href="/reid/usercenter/managedata/">数据管理</a></li>
+                <li><a href="/reid/usercenter/performance/">模型性能</a></li>
+                <li><a href="/reid/login/">注销用户</a></li>
+            </ul>
+        </div>
+        {% block right %} {% endblock %}
+    </div>
+{% endblock %}

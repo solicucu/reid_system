@@ -1,0 +1,22 @@
+{
+    "layer1": [
+        "avg_pool_3x3",
+        "max_pool_3x3",
+        "skip_connect"
+    ],
+    "layer2": [
+        "zeros",
+        "avg_pool_3x3",
+        "sep_conv_3x3"
+    ],
+    "layer3": [
+        "avg_pool_3x3",
+        "sep_conv_5x5",
+        "sep_conv_5x5"
+    ],
+    "layer4": [
+        "skip_connect",
+        "dil_conv_3x3",
+        "zeros"
+    ]
+}

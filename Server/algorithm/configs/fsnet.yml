@@ -1,0 +1,62 @@
+MODEL:
+  DEVICE: 'cpu'
+  NAME: 'fsnet'
+  PRETRAIN_PATH: ''
+  USE_BNNECK: "yes"
+
+DATASET:
+  NAME: 'market1501'
+
+DATA:
+  IMAGE_SIZE: [256,128]
+  HF_PROB: 0.5
+  RE_PROB: 0.5
+  MEAN: [0.485, 0.456, 0.406]
+  STD: [0.229, 0.224, 0.225]
+  PADDING: 10
+
+DATALOADER:
+  NUM_WORKERS: 8
+  SAMPLER: 'triplet'
+  NUM_INSTANCE: 4
+
+SOLVER:
+  MAX_EPOCHS: 120
+  IMGS_PER_BATCH: 64
+
+  BASE_LR: 0.015
+  LR_DECAY_PERIOD: 10
+  LR_DECAY_FACTOR: 0.1
+  LR_SCHEDULER_NAME: "WarmupCosAnnLR"
+  # LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  LR_MIN: 0.001
+  WARMUP_ITERS: 0 
+
+  OPTIMIZER_NAME: "SGD"
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.005
+
+  LOSS_NAME: "softmax_triplet"
+  TRI_MARGIN: 0.3
+
+TEST:
+  IMGS_PER_BATCH: 128
+  FEAT_NORM: 'yes'
+  BEST_CKPT: "best_ckpt.pth"
+
+OUTPUT:
+  ROOT_DIR: "/home/share/solicucu/data/ReID/MobileNetReID/fsnet/"
+  CKPT_DIR: "checkpoints/fsnet_cos_in60/"
+  LOG_PERIOD: 10
+  LOG_NAME: 'log_fsnet_cos_in60.txt'
+  CHECKPOINT_PERIOD: 20
+  EVAL_PERIOD: 20
+
+DARTS:
+  IN_PLANES: 60
+  LAYERS: [3, 4, 6, 3]
+  GENOTYPE: 'best_genotype.json'
+  CKPT_NAME: 'best_ckpt_fit.pth'
+  GRAD_CLIP: 5.
+  PRETRAINED: False
+

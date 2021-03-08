@@ -1,0 +1,13 @@
+ body {
+     /*background-image: url(../images/scatter.jpg);*/
+     color: white;
+     background-size: cover;
+     margin: 0;
+ }
+.welcome {
+    font-size: 40px;
+    font-style: italic;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}

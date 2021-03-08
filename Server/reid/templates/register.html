@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %} Register {% endblock %}
+{% block style %}
+    <style>
+        .registerbox {
+            position: absolute;
+            top:150px;
+            right: 100px;
+            border:2px solid white;
+            width:250px;
+            height:250px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 10px;
+        }
+        .boxtitle {
+            font-size: 20px;
+        }
+        a {
+            color: white;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .submit {
+            width: 212px;
+            height: 27px;
+            background-color: deepskyblue;
+            border-width: 0;
+            border-radius:5px;
+            margin-top: 10px;
+        }
+        .redspand {
+            color: red;
+        }
+        .greenspand {
+            color: green;
+        }
+        span {
+            font-size: 10px;
+        }
+
+
+    </style>
+{% endblock %}
+{% block head %}
+    <script>
+        function $(id){
+            // 注意 getElementById 小写的d
+            return  document.getElementById(id);
+        }
+        function checkName(){
+            // 注意是根据id 所以要指定id名 at body
+            var name = $("nid").value;
+            // 定义正则
+            // reg = /[0-9a-zA-Z]/  // 表示包含。。。。
+            // 必须加上^ $ 表示这些开头这些结尾，中间没有其他字母
+            reg = new RegExp('^[_0-9a-zA-Z\u4e00-\u9fa5]{1,20}$');
+
+            if(name.length === 0){
+                $('namespand').innerHTML = '* 姓名不能为空';
+                $('namespand').className = 'redspand';
+            }
+            else if (reg.test(name)){
+                // $('namespand').innerHTML = '* 姓名合法'
+                $('namespand').innerHTML = '';
+                $('namespand').className = 'greenspand'
+            }
+            else {
+                $('namespand').innerHTML = '* 只能由20个以内的数字字母中文下划线组合';
+                $('namespand').className = 'redspand';
+            }
+        }
+
+        function checkPassword(){
+            var pwd = $("pid").value;
+            reg = new RegExp('^[0-9a-zA-Z]{6,12}$');
+            if (pwd.length === 0){
+                $('pwspand').innerHTML = '* 密码不能为空';
+                $('pwspand').className = 'redspand'
+            }
+            else if (reg.test(pwd)){
+                $('pwspand').innerHTML = '';
+                $('pwspand').className = 'greenspand'
+            }
+            else {
+                $('pwspand').innerHTML = "* 密码只能由6-12个数字字母组合";
+                $('pwspand').className = 'redspand'
+            }
+
+        }
+
+    </script>
+{% endblock %}
+{% block login %} <a href="#">注册</a> {% endblock %}
+{% block datacenter %}
+    数据中心
+{% endblock %}
+{% block reid %}
+    ReID
+{% endblock %}
+{% block main %}
+    <div class = "registerbox" align="center">
+        <form action = "/reid/register/" method = "post">
+            {% csrf_token %}
+            <p class="boxtitle"> 用户注册 </p>
+            <p>
+                <label for = 'nid'>姓名: </label><input type = "text" onblur="checkName()" name = "name" id = "nid" placeholder="20个以内的数字字母中文下划线组合">
+                {% if error is not None %}
+                    <p><span id = namsespand class="redspand">{{error}}</span>
+                {% else %}
+                    <p><span id = namespand></span><p>
+                {% endif %}
+            </p>
+             <p>
+                <label for = 'pid'>密码: </label><input type = "password" onblur="checkPassword()" name = password id = "pid" placeholder="6-12个字母或数字组合">
+                <p><span id = 'pwspand'></span><p>
+            <div>
+                <input class="submit" type = "submit" value = "注 册">
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

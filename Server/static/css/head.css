@@ -1,0 +1,67 @@
+.head {
+    /*background-color: red;*/
+    height: 60px;
+    width: 1365px;
+    color: white;
+    /*下面是用来居中的*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.head:hover{
+    background-color: #1C1C1C
+}
+.logo {
+    /*background-color: aqua;*/
+    float: left;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 20px;
+    font-style: italic;
+}
+.item {
+    /*background-color: aquamarine;*/
+    width: 100px;
+    height: 60px;
+    float: left;
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.item:hover{
+    border-bottom: 2px solid white;
+}
+.login {
+    /*background-color: green;*/
+    float: left;
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    font-size: 12px;
+}
+
+.option_box{
+    display:none;
+    width: 100px;
+    height: 60px;
+    position: relative;
+    top: 55px;
+    left:0;
+    background-color: #1C1C1C;
+    padding: 0;
+}
+.option {
+    width: 100px;
+    list-style: none;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.option:hover{
+    background-color: gray;
+}

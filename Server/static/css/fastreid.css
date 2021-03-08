@@ -1,0 +1,111 @@
+.main {
+    position: relative;
+    top:40px;
+    left: 80px;
+    width: 1150px;
+    height: 520px;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(255,255,255,0.5)
+}
+.title {
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    padding: 5px 5px 10px 5px;
+}
+.selects {
+    opacity: 0.5;
+    margin-top: 20px;
+}
+.selects select {
+    margin-right: 15px;
+    font-size: 16px;
+}
+.viewbox {
+    float: left;
+    width: 1100px;
+    height: 380px;
+    position: relative;
+    left:20px;
+    top:20px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+}
+.querybox {
+    position: relative;
+    top:20px;
+    left: 20px;
+    float: left;
+    width: 170px;
+    height: 340px;
+    /*background-color: deepskyblue;*/
+}
+.gallerybox {
+    position: relative;
+    top: 20px;
+    float: left;
+    width: 800px;
+    height: 340px;
+    /*background-color: deepskyblue;*/
+    margin-left: 50px;
+}
+.imagebox {
+    float: left;
+    position: relative;
+    top:10px;
+    left:10px;
+    /*background-color: plum;*/
+    background: rgba(169,169,169,0.5);
+    width: 140px;
+    height: 270px;
+    margin:5px 5px 5px 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+.imagebox img {
+    width: 128px;
+    height: 256px;
+    margin-top: 7px;
+}
+.labels {
+    position: relative;
+    top:30px;
+    /*border: 1px solid black;*/
+}
+.qlabel {
+    position: relative;
+    top:30px;
+    /*border: 1px solid black;*/
+    padding: 5px 10px 5px 10px;
+    background-color: deepskyblue;
+    color: white;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+.gitem {
+    float: left;
+    display: none;
+    /*background-color: #51dd5d;*/
+    width: 160px;
+    height: 290px;
+}
+.lefticon {
+    float: left;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top:170px;
+    left: 10px;
+    opacity: 0.3;
+}
+.righticon {
+    float: left;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top:170px;
+    left: 30px;
+    opacity: 0.3;
+}

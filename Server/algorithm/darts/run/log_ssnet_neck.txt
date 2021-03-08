@@ -1,0 +1,448 @@
+solicucu
+train_search.py line 103 2020-03-14 10:14:30,682 DARTS INFO: configs:
+train_search.py line 105 2020-03-14 10:14:30,683 DARTS INFO: device: cuda
+train_search.py line 105 2020-03-14 10:14:30,683 DARTS INFO: device_ids: 2
+train_search.py line 105 2020-03-14 10:14:30,683 DARTS INFO: dataset: market1501
+train_search.py line 105 2020-03-14 10:14:30,683 DARTS INFO: dataset_dir: /home/share/solicucu/data/
+train_search.py line 105 2020-03-14 10:14:30,683 DARTS INFO: in_planes: 60
+train_search.py line 105 2020-03-14 10:14:30,683 DARTS INFO: init_size: [256, 128]
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: model_name: ssnet
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: layers: [3, 4, 6, 3]
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: use_attention: True
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: pretrained: None
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: num_workers: 4
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: sampler: triplet
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: num_instance: 4
+train_search.py line 105 2020-03-14 10:14:30,684 DARTS INFO: max_epochs: 120
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: batch_size: 32
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: base_lr: 0.025
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: lr_decay_period: 10
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: lr_decay_factor: 0.1
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: lr_scheduler_name: CosineAnnealingLR
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: lr_min: 0.001
+train_search.py line 105 2020-03-14 10:14:30,685 DARTS INFO: arch_lr: 0.02
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: optimizer_name: SGD
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: momentum: 0.9
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: weight_decay: 0.0005
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: arch_weight_decay: 0.0005
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: loss_name: softmax_triplet
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: tri_margin: 0.3
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: output_dir: /home/share/solicucu/data/ReID/MobileNetReID/ssnet/
+train_search.py line 105 2020-03-14 10:14:30,686 DARTS INFO: ckpt_dir: checkpoints/search_neck_softmax_triplet/
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: log_period: 10
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: log_name: log_ssnet_neck_softmax_triplet_search.txt
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: ckpt_period: 40
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: eval_period: 40
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: unrolled: True
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: grad_clip: 5
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: seed: 5
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: use_pcb: False
+train_search.py line 105 2020-03-14 10:14:30,687 DARTS INFO: use_neck: True
+train_search.py line 105 2020-03-14 10:14:30,688 DARTS INFO: best_ckpt: 
+train_search.py line 109 2020-03-14 10:14:30,688 DARTS INFO: Train with GPU: 2
+=> init Market1501
+Dataset statistics:
+  -------------------------------------
+  subset   | # ids | # images | cameras
+  train    |   751 |        6 |     12936
+  query    |   750 |        6 |      3368
+  gallery  |   751 |        6 |     15913
+darts_builder.py line 147 2020-03-14 10:14:31,141 DARTS.train INFO: size of train_set is 11160
+darts_builder.py line 148 2020-03-14 10:14:31,141 DARTS.train INFO: size of val_set is 3004
+train_search.py line 177 2020-03-14 10:14:34,752 DARTS.train INFO: the param number of the model is 16.14 M
+train_search.py line 179 2020-03-14 10:14:34,753 DARTS.train INFO: Start training
+/home/hanjun/anaconda3/envs/gpytorch/lib/python3.6/site-packages/torch/optim/lr_scheduler.py:100: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule.See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
+../train_search.py:230: UserWarning: torch.nn.utils.clip_grad_norm is now deprecated in favor of torch.nn.utils.clip_grad_norm_.
+  nn.utils.clip_grad_norm(model.parameters(), cfg.grad_clip)
+train_search.py line 246 2020-03-14 10:16:11,035 DARTS.train INFO: epoch 1: 34/349 with loss is 42.25689 and acc is 0.000
+train_search.py line 246 2020-03-14 10:17:46,506 DARTS.train INFO: epoch 1: 68/349 with loss is 32.78392 and acc is 0.033
+train_search.py line 246 2020-03-14 10:19:21,494 DARTS.train INFO: epoch 1: 102/349 with loss is 27.46134 and acc is 0.017
+train_search.py line 246 2020-03-14 10:20:57,993 DARTS.train INFO: epoch 1: 136/349 with loss is 24.30962 and acc is 0.009
+train_search.py line 246 2020-03-14 10:22:34,506 DARTS.train INFO: epoch 1: 170/349 with loss is 22.31011 and acc is 0.007
+train_search.py line 246 2020-03-14 10:24:11,404 DARTS.train INFO: epoch 1: 204/349 with loss is 20.86680 and acc is 0.004
+train_search.py line 246 2020-03-14 10:25:48,226 DARTS.train INFO: epoch 1: 238/349 with loss is 20.03895 and acc is 0.004
+train_search.py line 246 2020-03-14 10:27:26,277 DARTS.train INFO: epoch 1: 272/349 with loss is 19.66122 and acc is 0.004
+train_search.py line 246 2020-03-14 10:29:05,241 DARTS.train INFO: epoch 1: 306/349 with loss is 18.93663 and acc is 0.007
+train_search.py line 246 2020-03-14 10:30:48,482 DARTS.train INFO: epoch 1: 340/349 with loss is 18.08844 and acc is 0.012
+train_search.py line 248 2020-03-14 10:31:06,818 DARTS.train INFO: end epochs 1/120 with lr: 0.02500 and avg_time is: 89.406 ms
+train_search.py line 246 2020-03-14 10:32:49,904 DARTS.train INFO: epoch 2: 34/349 with loss is 17.89225 and acc is 0.042
+train_search.py line 246 2020-03-14 10:34:32,177 DARTS.train INFO: epoch 2: 68/349 with loss is 18.30352 and acc is 0.024
+train_search.py line 246 2020-03-14 10:36:14,644 DARTS.train INFO: epoch 2: 102/349 with loss is 18.33786 and acc is 0.015
+train_search.py line 246 2020-03-14 10:37:57,293 DARTS.train INFO: epoch 2: 136/349 with loss is 18.29158 and acc is 0.010
+train_search.py line 246 2020-03-14 10:39:39,838 DARTS.train INFO: epoch 2: 170/349 with loss is 18.14070 and acc is 0.007
+train_search.py line 246 2020-03-14 10:41:23,115 DARTS.train INFO: epoch 2: 204/349 with loss is 18.19402 and acc is 0.005
+train_search.py line 246 2020-03-14 10:43:05,982 DARTS.train INFO: epoch 2: 238/349 with loss is 17.88680 and acc is 0.006
+train_search.py line 246 2020-03-14 10:44:48,813 DARTS.train INFO: epoch 2: 272/349 with loss is 17.64456 and acc is 0.004
+train_search.py line 246 2020-03-14 10:46:31,520 DARTS.train INFO: epoch 2: 306/349 with loss is 17.07177 and acc is 0.006
+train_search.py line 246 2020-03-14 10:48:15,965 DARTS.train INFO: epoch 2: 340/349 with loss is 16.33855 and acc is 0.023
+train_search.py line 248 2020-03-14 10:48:34,111 DARTS.train INFO: end epochs 2/120 with lr: 0.02498 and avg_time is: 94.314 ms
+train_search.py line 246 2020-03-14 10:50:16,874 DARTS.train INFO: epoch 3: 34/349 with loss is 18.09216 and acc is 0.029
+train_search.py line 246 2020-03-14 10:51:59,478 DARTS.train INFO: epoch 3: 68/349 with loss is 17.92532 and acc is 0.015
+train_search.py line 246 2020-03-14 10:53:41,306 DARTS.train INFO: epoch 3: 102/349 with loss is 17.68659 and acc is 0.010
+train_search.py line 246 2020-03-14 10:55:22,908 DARTS.train INFO: epoch 3: 136/349 with loss is 17.63753 and acc is 0.007
+train_search.py line 246 2020-03-14 10:57:05,113 DARTS.train INFO: epoch 3: 170/349 with loss is 17.42283 and acc is 0.006
+train_search.py line 246 2020-03-14 10:58:47,948 DARTS.train INFO: epoch 3: 204/349 with loss is 17.41311 and acc is 0.010
+train_search.py line 246 2020-03-14 11:00:30,116 DARTS.train INFO: epoch 3: 238/349 with loss is 17.33722 and acc is 0.007
+train_search.py line 246 2020-03-14 11:02:12,448 DARTS.train INFO: epoch 3: 272/349 with loss is 16.94573 and acc is 0.009
+train_search.py line 246 2020-03-14 11:03:56,344 DARTS.train INFO: epoch 3: 306/349 with loss is 16.73110 and acc is 0.009
+train_search.py line 246 2020-03-14 11:05:39,400 DARTS.train INFO: epoch 3: 340/349 with loss is 15.44240 and acc is 0.032
+train_search.py line 248 2020-03-14 11:06:00,814 DARTS.train INFO: end epochs 3/120 with lr: 0.02496 and avg_time is: 93.987 ms
+train_search.py line 246 2020-03-14 11:07:45,320 DARTS.train INFO: epoch 4: 34/349 with loss is 21.05361 and acc is 0.033
+train_search.py line 246 2020-03-14 11:09:27,598 DARTS.train INFO: epoch 4: 68/349 with loss is 19.12309 and acc is 0.019
+train_search.py line 246 2020-03-14 11:11:10,516 DARTS.train INFO: epoch 4: 102/349 with loss is 17.73565 and acc is 0.018
+train_search.py line 246 2020-03-14 11:12:52,965 DARTS.train INFO: epoch 4: 136/349 with loss is 17.22675 and acc is 0.016
+train_search.py line 246 2020-03-14 11:14:36,709 DARTS.train INFO: epoch 4: 170/349 with loss is 16.76257 and acc is 0.012
+train_search.py line 246 2020-03-14 11:16:20,120 DARTS.train INFO: epoch 4: 204/349 with loss is 16.30825 and acc is 0.018
+train_search.py line 246 2020-03-14 11:18:03,252 DARTS.train INFO: epoch 4: 238/349 with loss is 15.92406 and acc is 0.020
+train_search.py line 246 2020-03-14 11:19:47,070 DARTS.train INFO: epoch 4: 272/349 with loss is 15.37960 and acc is 0.032
+train_search.py line 246 2020-03-14 11:21:31,383 DARTS.train INFO: epoch 4: 306/349 with loss is 14.39622 and acc is 0.048
+train_search.py line 246 2020-03-14 11:23:15,057 DARTS.train INFO: epoch 4: 340/349 with loss is 13.24142 and acc is 0.088
+train_search.py line 248 2020-03-14 11:23:36,628 DARTS.train INFO: end epochs 4/120 with lr: 0.02493 and avg_time is: 94.785 ms
+train_search.py line 246 2020-03-14 11:25:20,428 DARTS.train INFO: epoch 5: 34/349 with loss is 16.49778 and acc is 0.026
+train_search.py line 246 2020-03-14 11:27:01,860 DARTS.train INFO: epoch 5: 68/349 with loss is 15.66390 and acc is 0.026
+train_search.py line 246 2020-03-14 11:28:43,994 DARTS.train INFO: epoch 5: 102/349 with loss is 15.30414 and acc is 0.026
+train_search.py line 246 2020-03-14 11:30:25,878 DARTS.train INFO: epoch 5: 136/349 with loss is 15.01072 and acc is 0.035
+train_search.py line 246 2020-03-14 11:32:08,638 DARTS.train INFO: epoch 5: 170/349 with loss is 14.71817 and acc is 0.037
+train_search.py line 246 2020-03-14 11:33:50,373 DARTS.train INFO: epoch 5: 204/349 with loss is 14.55228 and acc is 0.047
+train_search.py line 246 2020-03-14 11:35:32,800 DARTS.train INFO: epoch 5: 238/349 with loss is 14.08598 and acc is 0.048
+train_search.py line 246 2020-03-14 11:37:14,997 DARTS.train INFO: epoch 5: 272/349 with loss is 13.55299 and acc is 0.059
+train_search.py line 246 2020-03-14 11:38:57,690 DARTS.train INFO: epoch 5: 306/349 with loss is 13.17858 and acc is 0.077
+train_search.py line 246 2020-03-14 11:40:39,969 DARTS.train INFO: epoch 5: 340/349 with loss is 11.78173 and acc is 0.144
+train_search.py line 248 2020-03-14 11:40:58,181 DARTS.train INFO: end epochs 5/120 with lr: 0.02490 and avg_time is: 93.792 ms
+train_search.py line 246 2020-03-14 11:42:41,323 DARTS.train INFO: epoch 6: 34/349 with loss is 16.64058 and acc is 0.136
+train_search.py line 246 2020-03-14 11:44:22,785 DARTS.train INFO: epoch 6: 68/349 with loss is 15.16058 and acc is 0.090
+train_search.py line 246 2020-03-14 11:46:04,473 DARTS.train INFO: epoch 6: 102/349 with loss is 14.55914 and acc is 0.066
+train_search.py line 246 2020-03-14 11:47:46,331 DARTS.train INFO: epoch 6: 136/349 with loss is 13.86870 and acc is 0.061
+train_search.py line 246 2020-03-14 11:49:28,285 DARTS.train INFO: epoch 6: 170/349 with loss is 13.48863 and acc is 0.064
+train_search.py line 246 2020-03-14 11:51:10,517 DARTS.train INFO: epoch 6: 204/349 with loss is 13.08848 and acc is 0.078
+train_search.py line 246 2020-03-14 11:52:52,419 DARTS.train INFO: epoch 6: 238/349 with loss is 12.45635 and acc is 0.099
+train_search.py line 246 2020-03-14 11:54:33,971 DARTS.train INFO: epoch 6: 272/349 with loss is 12.03094 and acc is 0.114
+train_search.py line 246 2020-03-14 11:56:15,504 DARTS.train INFO: epoch 6: 306/349 with loss is 11.26163 and acc is 0.146
+train_search.py line 246 2020-03-14 11:57:57,406 DARTS.train INFO: epoch 6: 340/349 with loss is 10.32243 and acc is 0.200
+train_search.py line 248 2020-03-14 11:58:18,887 DARTS.train INFO: end epochs 6/120 with lr: 0.02485 and avg_time is: 93.450 ms
+train_search.py line 246 2020-03-14 12:00:01,578 DARTS.train INFO: epoch 7: 34/349 with loss is 15.65951 and acc is 0.062
+train_search.py line 246 2020-03-14 12:01:43,509 DARTS.train INFO: epoch 7: 68/349 with loss is 14.13236 and acc is 0.070
+train_search.py line 246 2020-03-14 12:03:24,294 DARTS.train INFO: epoch 7: 102/349 with loss is 13.13836 and acc is 0.076
+train_search.py line 246 2020-03-14 12:05:05,546 DARTS.train INFO: epoch 7: 136/349 with loss is 12.55861 and acc is 0.086
+train_search.py line 246 2020-03-14 12:06:47,788 DARTS.train INFO: epoch 7: 170/349 with loss is 12.14866 and acc is 0.097
+train_search.py line 246 2020-03-14 12:08:29,648 DARTS.train INFO: epoch 7: 204/349 with loss is 11.49184 and acc is 0.117
+train_search.py line 246 2020-03-14 12:10:11,951 DARTS.train INFO: epoch 7: 238/349 with loss is 10.96791 and acc is 0.139
+train_search.py line 246 2020-03-14 12:11:54,573 DARTS.train INFO: epoch 7: 272/349 with loss is 10.53316 and acc is 0.166
+train_search.py line 246 2020-03-14 12:13:38,393 DARTS.train INFO: epoch 7: 306/349 with loss is 9.69716 and acc is 0.212
+train_search.py line 246 2020-03-14 12:15:21,757 DARTS.train INFO: epoch 7: 340/349 with loss is 8.96352 and acc is 0.269
+train_search.py line 248 2020-03-14 12:15:39,880 DARTS.train INFO: end epochs 7/120 with lr: 0.02480 and avg_time is: 93.744 ms
+train_search.py line 246 2020-03-14 12:17:22,983 DARTS.train INFO: epoch 8: 34/349 with loss is 14.26697 and acc is 0.086
+train_search.py line 246 2020-03-14 12:19:04,698 DARTS.train INFO: epoch 8: 68/349 with loss is 12.57112 and acc is 0.104
+train_search.py line 246 2020-03-14 12:20:46,641 DARTS.train INFO: epoch 8: 102/349 with loss is 11.84141 and acc is 0.114
+train_search.py line 246 2020-03-14 12:22:28,707 DARTS.train INFO: epoch 8: 136/349 with loss is 11.33162 and acc is 0.137
+train_search.py line 246 2020-03-14 12:24:10,787 DARTS.train INFO: epoch 8: 170/349 with loss is 10.74401 and acc is 0.151
+train_search.py line 246 2020-03-14 12:25:53,869 DARTS.train INFO: epoch 8: 204/349 with loss is 10.43409 and acc is 0.175
+train_search.py line 246 2020-03-14 12:27:36,190 DARTS.train INFO: epoch 8: 238/349 with loss is 9.95671 and acc is 0.196
+train_search.py line 246 2020-03-14 12:29:18,851 DARTS.train INFO: epoch 8: 272/349 with loss is 9.48989 and acc is 0.223
+train_search.py line 246 2020-03-14 12:31:01,898 DARTS.train INFO: epoch 8: 306/349 with loss is 8.72921 and acc is 0.268
+train_search.py line 246 2020-03-14 12:32:44,847 DARTS.train INFO: epoch 8: 340/349 with loss is 7.66379 and acc is 0.334
+train_search.py line 248 2020-03-14 12:33:06,238 DARTS.train INFO: end epochs 8/120 with lr: 0.02474 and avg_time is: 93.951 ms
+train_search.py line 246 2020-03-14 12:34:49,928 DARTS.train INFO: epoch 9: 34/349 with loss is 15.24346 and acc is 0.131
+train_search.py line 246 2020-03-14 12:36:31,806 DARTS.train INFO: epoch 9: 68/349 with loss is 12.74187 and acc is 0.155
+train_search.py line 246 2020-03-14 12:38:13,873 DARTS.train INFO: epoch 9: 102/349 with loss is 11.45643 and acc is 0.179
+train_search.py line 246 2020-03-14 12:39:55,796 DARTS.train INFO: epoch 9: 136/349 with loss is 10.43100 and acc is 0.192
+train_search.py line 246 2020-03-14 12:41:38,421 DARTS.train INFO: epoch 9: 170/349 with loss is 9.86794 and acc is 0.193
+train_search.py line 246 2020-03-14 12:43:19,573 DARTS.train INFO: epoch 9: 204/349 with loss is 9.53520 and acc is 0.210
+train_search.py line 246 2020-03-14 12:44:58,996 DARTS.train INFO: epoch 9: 238/349 with loss is 9.13058 and acc is 0.226
+train_search.py line 246 2020-03-14 12:46:37,860 DARTS.train INFO: epoch 9: 272/349 with loss is 8.63845 and acc is 0.259
+train_search.py line 246 2020-03-14 12:48:16,803 DARTS.train INFO: epoch 9: 306/349 with loss is 7.95995 and acc is 0.295
+train_search.py line 246 2020-03-14 12:49:55,271 DARTS.train INFO: epoch 9: 340/349 with loss is 7.19490 and acc is 0.349
+train_search.py line 248 2020-03-14 12:50:18,465 DARTS.train INFO: end epochs 9/120 with lr: 0.02467 and avg_time is: 92.419 ms
+train_search.py line 246 2020-03-14 12:51:58,141 DARTS.train INFO: epoch 10: 34/349 with loss is 12.50375 and acc is 0.139
+train_search.py line 246 2020-03-14 12:53:37,450 DARTS.train INFO: epoch 10: 68/349 with loss is 10.80264 and acc is 0.178
+train_search.py line 246 2020-03-14 12:55:16,824 DARTS.train INFO: epoch 10: 102/349 with loss is 9.88566 and acc is 0.196
+train_search.py line 246 2020-03-14 12:56:57,121 DARTS.train INFO: epoch 10: 136/349 with loss is 9.21286 and acc is 0.220
+train_search.py line 246 2020-03-14 12:58:37,308 DARTS.train INFO: epoch 10: 170/349 with loss is 8.78632 and acc is 0.242
+train_search.py line 246 2020-03-14 13:00:17,004 DARTS.train INFO: epoch 10: 204/349 with loss is 8.54399 and acc is 0.256
+train_search.py line 246 2020-03-14 13:01:57,525 DARTS.train INFO: epoch 10: 238/349 with loss is 8.25761 and acc is 0.269
+train_search.py line 246 2020-03-14 13:03:40,593 DARTS.train INFO: epoch 10: 272/349 with loss is 7.94078 and acc is 0.287
+train_search.py line 246 2020-03-14 13:05:23,634 DARTS.train INFO: epoch 10: 306/349 with loss is 7.20038 and acc is 0.341
+train_search.py line 246 2020-03-14 13:07:07,442 DARTS.train INFO: epoch 10: 340/349 with loss is 6.28810 and acc is 0.420
+train_search.py line 248 2020-03-14 13:07:28,852 DARTS.train INFO: end epochs 10/120 with lr: 0.02459 and avg_time is: 92.523 ms
+train_search.py line 246 2020-03-14 13:09:13,005 DARTS.train INFO: epoch 11: 34/349 with loss is 11.81938 and acc is 0.110
+train_search.py line 246 2020-03-14 13:10:55,077 DARTS.train INFO: epoch 11: 68/349 with loss is 10.11346 and acc is 0.185
+train_search.py line 246 2020-03-14 13:12:37,230 DARTS.train INFO: epoch 11: 102/349 with loss is 9.12223 and acc is 0.225
+train_search.py line 246 2020-03-14 13:14:20,079 DARTS.train INFO: epoch 11: 136/349 with loss is 8.35231 and acc is 0.262
+train_search.py line 246 2020-03-14 13:16:02,878 DARTS.train INFO: epoch 11: 170/349 with loss is 8.00706 and acc is 0.271
+train_search.py line 246 2020-03-14 13:17:45,147 DARTS.train INFO: epoch 11: 204/349 with loss is 7.87803 and acc is 0.286
+train_search.py line 246 2020-03-14 13:19:28,043 DARTS.train INFO: epoch 11: 238/349 with loss is 7.43283 and acc is 0.325
+train_search.py line 246 2020-03-14 13:21:11,288 DARTS.train INFO: epoch 11: 272/349 with loss is 7.06747 and acc is 0.348
+train_search.py line 246 2020-03-14 13:22:54,463 DARTS.train INFO: epoch 11: 306/349 with loss is 6.59915 and acc is 0.376
+train_search.py line 246 2020-03-14 13:24:38,772 DARTS.train INFO: epoch 11: 340/349 with loss is 5.50867 and acc is 0.468
+train_search.py line 248 2020-03-14 13:25:00,315 DARTS.train INFO: end epochs 11/120 with lr: 0.02451 and avg_time is: 94.407 ms
+train_search.py line 246 2020-03-14 13:26:44,459 DARTS.train INFO: epoch 12: 34/349 with loss is 14.53780 and acc is 0.117
+train_search.py line 246 2020-03-14 13:28:27,356 DARTS.train INFO: epoch 12: 68/349 with loss is 11.13070 and acc is 0.202
+train_search.py line 246 2020-03-14 13:30:10,039 DARTS.train INFO: epoch 12: 102/349 with loss is 9.42910 and acc is 0.247
+train_search.py line 246 2020-03-14 13:31:53,716 DARTS.train INFO: epoch 12: 136/349 with loss is 8.45495 and acc is 0.269
+train_search.py line 246 2020-03-14 13:33:36,669 DARTS.train INFO: epoch 12: 170/349 with loss is 7.82248 and acc is 0.292
+train_search.py line 246 2020-03-14 13:35:19,491 DARTS.train INFO: epoch 12: 204/349 with loss is 7.38144 and acc is 0.315
+train_search.py line 246 2020-03-14 13:37:02,594 DARTS.train INFO: epoch 12: 238/349 with loss is 6.88803 and acc is 0.340
+train_search.py line 246 2020-03-14 13:38:46,798 DARTS.train INFO: epoch 12: 272/349 with loss is 6.35891 and acc is 0.388
+train_search.py line 246 2020-03-14 13:40:30,166 DARTS.train INFO: epoch 12: 306/349 with loss is 5.74178 and acc is 0.432
+train_search.py line 246 2020-03-14 13:42:13,521 DARTS.train INFO: epoch 12: 340/349 with loss is 4.78812 and acc is 0.513
+train_search.py line 248 2020-03-14 13:42:37,971 DARTS.train INFO: end epochs 12/120 with lr: 0.02441 and avg_time is: 94.684 ms
+train_search.py line 246 2020-03-14 13:44:23,606 DARTS.train INFO: epoch 13: 34/349 with loss is 10.07873 and acc is 0.263
+train_search.py line 246 2020-03-14 13:46:06,397 DARTS.train INFO: epoch 13: 68/349 with loss is 8.67026 and acc is 0.296
+train_search.py line 246 2020-03-14 13:47:49,522 DARTS.train INFO: epoch 13: 102/349 with loss is 7.84828 and acc is 0.308
+train_search.py line 246 2020-03-14 13:49:31,584 DARTS.train INFO: epoch 13: 136/349 with loss is 7.37489 and acc is 0.324
+train_search.py line 246 2020-03-14 13:51:15,612 DARTS.train INFO: epoch 13: 170/349 with loss is 6.93306 and acc is 0.354
+train_search.py line 246 2020-03-14 13:52:58,672 DARTS.train INFO: epoch 13: 204/349 with loss is 6.52657 and acc is 0.378
+train_search.py line 246 2020-03-14 13:54:41,174 DARTS.train INFO: epoch 13: 238/349 with loss is 6.29526 and acc is 0.389
+train_search.py line 246 2020-03-14 13:56:24,315 DARTS.train INFO: epoch 13: 272/349 with loss is 5.86744 and acc is 0.415
+train_search.py line 246 2020-03-14 13:58:07,305 DARTS.train INFO: epoch 13: 306/349 with loss is 5.23875 and acc is 0.461
+train_search.py line 246 2020-03-14 13:59:50,435 DARTS.train INFO: epoch 13: 340/349 with loss is 4.60060 and acc is 0.534
+train_search.py line 248 2020-03-14 14:00:09,061 DARTS.train INFO: end epochs 13/120 with lr: 0.02431 and avg_time is: 94.646 ms
+train_search.py line 246 2020-03-14 14:01:52,850 DARTS.train INFO: epoch 14: 34/349 with loss is 8.79202 and acc is 0.208
+train_search.py line 246 2020-03-14 14:03:35,283 DARTS.train INFO: epoch 14: 68/349 with loss is 7.73884 and acc is 0.287
+train_search.py line 246 2020-03-14 14:05:17,760 DARTS.train INFO: epoch 14: 102/349 with loss is 6.98079 and acc is 0.346
+train_search.py line 246 2020-03-14 14:07:00,719 DARTS.train INFO: epoch 14: 136/349 with loss is 6.78530 and acc is 0.353
+train_search.py line 246 2020-03-14 14:08:43,879 DARTS.train INFO: epoch 14: 170/349 with loss is 6.32605 and acc is 0.380
+train_search.py line 246 2020-03-14 14:10:27,769 DARTS.train INFO: epoch 14: 204/349 with loss is 6.08426 and acc is 0.398
+train_search.py line 246 2020-03-14 14:12:11,675 DARTS.train INFO: epoch 14: 238/349 with loss is 5.77942 and acc is 0.421
+train_search.py line 246 2020-03-14 14:13:55,923 DARTS.train INFO: epoch 14: 272/349 with loss is 5.43446 and acc is 0.458
+train_search.py line 246 2020-03-14 14:15:39,614 DARTS.train INFO: epoch 14: 306/349 with loss is 4.91188 and acc is 0.490
+train_search.py line 246 2020-03-14 14:17:23,504 DARTS.train INFO: epoch 14: 340/349 with loss is 4.13075 and acc is 0.582
+train_search.py line 248 2020-03-14 14:17:45,065 DARTS.train INFO: end epochs 14/120 with lr: 0.02420 and avg_time is: 94.815 ms
+train_search.py line 246 2020-03-14 14:19:29,927 DARTS.train INFO: epoch 15: 34/349 with loss is 10.69356 and acc is 0.196
+train_search.py line 246 2020-03-14 14:21:13,523 DARTS.train INFO: epoch 15: 68/349 with loss is 8.50095 and acc is 0.296
+train_search.py line 246 2020-03-14 14:22:57,883 DARTS.train INFO: epoch 15: 102/349 with loss is 7.19011 and acc is 0.348
+train_search.py line 246 2020-03-14 14:24:42,553 DARTS.train INFO: epoch 15: 136/349 with loss is 6.42269 and acc is 0.391
+train_search.py line 246 2020-03-14 14:26:27,203 DARTS.train INFO: epoch 15: 170/349 with loss is 6.05287 and acc is 0.399
+train_search.py line 246 2020-03-14 14:28:11,538 DARTS.train INFO: epoch 15: 204/349 with loss is 5.77072 and acc is 0.426
+train_search.py line 246 2020-03-14 14:29:56,004 DARTS.train INFO: epoch 15: 238/349 with loss is 5.31340 and acc is 0.462
+train_search.py line 246 2020-03-14 14:31:40,444 DARTS.train INFO: epoch 15: 272/349 with loss is 5.08677 and acc is 0.479
+train_search.py line 246 2020-03-14 14:33:25,022 DARTS.train INFO: epoch 15: 306/349 with loss is 4.43360 and acc is 0.542
+train_search.py line 246 2020-03-14 14:35:12,263 DARTS.train INFO: epoch 15: 340/349 with loss is 3.82541 and acc is 0.594
+train_search.py line 248 2020-03-14 14:35:33,659 DARTS.train INFO: end epochs 15/120 with lr: 0.02409 and avg_time is: 95.934 ms
+train_search.py line 246 2020-03-14 14:37:19,414 DARTS.train INFO: epoch 16: 34/349 with loss is 8.06610 and acc is 0.264
+train_search.py line 246 2020-03-14 14:39:06,714 DARTS.train INFO: epoch 16: 68/349 with loss is 6.80016 and acc is 0.349
+train_search.py line 246 2020-03-14 14:40:51,212 DARTS.train INFO: epoch 16: 102/349 with loss is 6.29483 and acc is 0.386
+train_search.py line 246 2020-03-14 14:42:38,437 DARTS.train INFO: epoch 16: 136/349 with loss is 5.89358 and acc is 0.411
+train_search.py line 246 2020-03-14 14:44:23,834 DARTS.train INFO: epoch 16: 170/349 with loss is 5.67723 and acc is 0.427
+train_search.py line 246 2020-03-14 14:46:10,299 DARTS.train INFO: epoch 16: 204/349 with loss is 5.26739 and acc is 0.467
+train_search.py line 246 2020-03-14 14:47:54,434 DARTS.train INFO: epoch 16: 238/349 with loss is 4.80514 and acc is 0.500
+train_search.py line 246 2020-03-14 14:49:40,546 DARTS.train INFO: epoch 16: 272/349 with loss is 4.45532 and acc is 0.529
+train_search.py line 246 2020-03-14 14:51:27,135 DARTS.train INFO: epoch 16: 306/349 with loss is 4.10732 and acc is 0.561
+train_search.py line 246 2020-03-14 14:53:16,044 DARTS.train INFO: epoch 16: 340/349 with loss is 3.50042 and acc is 0.628
+train_search.py line 248 2020-03-14 14:53:37,661 DARTS.train INFO: end epochs 16/120 with lr: 0.02396 and avg_time is: 97.337 ms
+train_search.py line 246 2020-03-14 14:55:26,797 DARTS.train INFO: epoch 17: 34/349 with loss is 7.29108 and acc is 0.292
+train_search.py line 246 2020-03-14 14:57:15,219 DARTS.train INFO: epoch 17: 68/349 with loss is 6.52472 and acc is 0.349
+train_search.py line 246 2020-03-14 14:59:03,060 DARTS.train INFO: epoch 17: 102/349 with loss is 5.97326 and acc is 0.402
+train_search.py line 246 2020-03-14 15:00:48,138 DARTS.train INFO: epoch 17: 136/349 with loss is 5.33003 and acc is 0.448
+train_search.py line 246 2020-03-14 15:02:33,150 DARTS.train INFO: epoch 17: 170/349 with loss is 4.95709 and acc is 0.476
+train_search.py line 246 2020-03-14 15:04:20,372 DARTS.train INFO: epoch 17: 204/349 with loss is 4.62402 and acc is 0.514
+train_search.py line 246 2020-03-14 15:06:08,091 DARTS.train INFO: epoch 17: 238/349 with loss is 4.43178 and acc is 0.531
+train_search.py line 246 2020-03-14 15:07:54,000 DARTS.train INFO: epoch 17: 272/349 with loss is 4.18749 and acc is 0.551
+train_search.py line 246 2020-03-14 15:09:40,917 DARTS.train INFO: epoch 17: 306/349 with loss is 3.90367 and acc is 0.584
+train_search.py line 246 2020-03-14 15:11:26,379 DARTS.train INFO: epoch 17: 340/349 with loss is 3.21108 and acc is 0.656
+train_search.py line 248 2020-03-14 15:11:49,051 DARTS.train INFO: end epochs 17/120 with lr: 0.02383 and avg_time is: 97.998 ms
+train_search.py line 246 2020-03-14 15:13:36,665 DARTS.train INFO: epoch 18: 34/349 with loss is 6.57525 and acc is 0.389
+train_search.py line 246 2020-03-14 15:15:21,896 DARTS.train INFO: epoch 18: 68/349 with loss is 5.87318 and acc is 0.436
+train_search.py line 246 2020-03-14 15:17:08,617 DARTS.train INFO: epoch 18: 102/349 with loss is 5.37392 and acc is 0.459
+train_search.py line 246 2020-03-14 15:18:50,913 DARTS.train INFO: epoch 18: 136/349 with loss is 5.08695 and acc is 0.471
+train_search.py line 246 2020-03-14 15:20:32,779 DARTS.train INFO: epoch 18: 170/349 with loss is 4.79355 and acc is 0.494
+train_search.py line 246 2020-03-14 15:22:16,056 DARTS.train INFO: epoch 18: 204/349 with loss is 4.53783 and acc is 0.516
+train_search.py line 246 2020-03-14 15:23:58,051 DARTS.train INFO: epoch 18: 238/349 with loss is 4.30540 and acc is 0.541
+train_search.py line 246 2020-03-14 15:25:39,637 DARTS.train INFO: epoch 18: 272/349 with loss is 3.90916 and acc is 0.569
+train_search.py line 246 2020-03-14 15:27:20,889 DARTS.train INFO: epoch 18: 306/349 with loss is 3.54640 and acc is 0.612
+train_search.py line 246 2020-03-14 15:28:59,933 DARTS.train INFO: epoch 18: 340/349 with loss is 2.91912 and acc is 0.686
+train_search.py line 248 2020-03-14 15:29:17,620 DARTS.train INFO: end epochs 18/120 with lr: 0.02369 and avg_time is: 94.402 ms
+train_search.py line 246 2020-03-14 15:30:57,537 DARTS.train INFO: epoch 19: 34/349 with loss is 9.25724 and acc is 0.208
+train_search.py line 246 2020-03-14 15:32:37,582 DARTS.train INFO: epoch 19: 68/349 with loss is 7.14220 and acc is 0.334
+train_search.py line 246 2020-03-14 15:34:18,302 DARTS.train INFO: epoch 19: 102/349 with loss is 5.75756 and acc is 0.437
+train_search.py line 246 2020-03-14 15:36:00,358 DARTS.train INFO: epoch 19: 136/349 with loss is 5.09352 and acc is 0.480
+train_search.py line 246 2020-03-14 15:37:41,732 DARTS.train INFO: epoch 19: 170/349 with loss is 4.45794 and acc is 0.523
+train_search.py line 246 2020-03-14 15:39:24,237 DARTS.train INFO: epoch 19: 204/349 with loss is 4.11105 and acc is 0.549
+train_search.py line 246 2020-03-14 15:41:06,100 DARTS.train INFO: epoch 19: 238/349 with loss is 3.91663 and acc is 0.568
+train_search.py line 246 2020-03-14 15:42:47,997 DARTS.train INFO: epoch 19: 272/349 with loss is 3.68409 and acc is 0.596
+train_search.py line 246 2020-03-14 15:44:30,141 DARTS.train INFO: epoch 19: 306/349 with loss is 3.45404 and acc is 0.616
+train_search.py line 246 2020-03-14 15:46:11,630 DARTS.train INFO: epoch 19: 340/349 with loss is 2.74619 and acc is 0.699
+train_search.py line 248 2020-03-14 15:46:32,686 DARTS.train INFO: end epochs 19/120 with lr: 0.02355 and avg_time is: 92.943 ms
+train_search.py line 246 2020-03-14 15:48:15,511 DARTS.train INFO: epoch 20: 34/349 with loss is 7.36046 and acc is 0.367
+train_search.py line 246 2020-03-14 15:49:57,566 DARTS.train INFO: epoch 20: 68/349 with loss is 5.84079 and acc is 0.449
+train_search.py line 246 2020-03-14 15:51:40,032 DARTS.train INFO: epoch 20: 102/349 with loss is 5.04911 and acc is 0.495
+train_search.py line 246 2020-03-14 15:53:21,766 DARTS.train INFO: epoch 20: 136/349 with loss is 4.50942 and acc is 0.533
+train_search.py line 246 2020-03-14 15:55:02,725 DARTS.train INFO: epoch 20: 170/349 with loss is 4.15020 and acc is 0.563
+train_search.py line 246 2020-03-14 15:56:44,106 DARTS.train INFO: epoch 20: 204/349 with loss is 3.92685 and acc is 0.574
+train_search.py line 246 2020-03-14 15:58:25,960 DARTS.train INFO: epoch 20: 238/349 with loss is 3.67446 and acc is 0.599
+train_search.py line 246 2020-03-14 16:00:07,453 DARTS.train INFO: epoch 20: 272/349 with loss is 3.46400 and acc is 0.616
+train_search.py line 246 2020-03-14 16:01:49,725 DARTS.train INFO: epoch 20: 306/349 with loss is 3.28489 and acc is 0.642
+train_search.py line 246 2020-03-14 16:03:31,062 DARTS.train INFO: epoch 20: 340/349 with loss is 2.54628 and acc is 0.722
+train_search.py line 248 2020-03-14 16:03:52,099 DARTS.train INFO: end epochs 20/120 with lr: 0.02339 and avg_time is: 93.335 ms
+train_search.py line 246 2020-03-14 16:05:34,689 DARTS.train INFO: epoch 21: 34/349 with loss is 4.57068 and acc is 0.515
+train_search.py line 246 2020-03-14 16:07:15,428 DARTS.train INFO: epoch 21: 68/349 with loss is 4.33539 and acc is 0.532
+train_search.py line 246 2020-03-14 16:08:57,177 DARTS.train INFO: epoch 21: 102/349 with loss is 4.13341 and acc is 0.540
+train_search.py line 246 2020-03-14 16:10:38,613 DARTS.train INFO: epoch 21: 136/349 with loss is 4.08798 and acc is 0.548
+train_search.py line 246 2020-03-14 16:12:21,775 DARTS.train INFO: epoch 21: 170/349 with loss is 3.83129 and acc is 0.568
+train_search.py line 246 2020-03-14 16:14:04,227 DARTS.train INFO: epoch 21: 204/349 with loss is 3.52577 and acc is 0.610
+train_search.py line 246 2020-03-14 16:15:47,321 DARTS.train INFO: epoch 21: 238/349 with loss is 3.43357 and acc is 0.619
+train_search.py line 246 2020-03-14 16:17:30,311 DARTS.train INFO: epoch 21: 272/349 with loss is 3.26569 and acc is 0.642
+train_search.py line 246 2020-03-14 16:19:14,276 DARTS.train INFO: epoch 21: 306/349 with loss is 3.08289 and acc is 0.659
+train_search.py line 246 2020-03-14 16:20:58,462 DARTS.train INFO: epoch 21: 340/349 with loss is 2.49477 and acc is 0.737
+train_search.py line 248 2020-03-14 16:21:20,354 DARTS.train INFO: end epochs 21/120 with lr: 0.02323 and avg_time is: 94.127 ms
+train_search.py line 246 2020-03-14 16:23:06,133 DARTS.train INFO: epoch 22: 34/349 with loss is 5.33713 and acc is 0.387
+train_search.py line 246 2020-03-14 16:24:52,635 DARTS.train INFO: epoch 22: 68/349 with loss is 4.62700 and acc is 0.476
+train_search.py line 246 2020-03-14 16:26:36,240 DARTS.train INFO: epoch 22: 102/349 with loss is 4.21523 and acc is 0.522
+train_search.py line 246 2020-03-14 16:28:21,556 DARTS.train INFO: epoch 22: 136/349 with loss is 3.88738 and acc is 0.562
+train_search.py line 246 2020-03-14 16:30:05,665 DARTS.train INFO: epoch 22: 170/349 with loss is 3.59002 and acc is 0.595
+train_search.py line 246 2020-03-14 16:31:50,915 DARTS.train INFO: epoch 22: 204/349 with loss is 3.39759 and acc is 0.617
+train_search.py line 246 2020-03-14 16:33:34,301 DARTS.train INFO: epoch 22: 238/349 with loss is 3.16413 and acc is 0.636
+train_search.py line 246 2020-03-14 16:35:16,280 DARTS.train INFO: epoch 22: 272/349 with loss is 3.03801 and acc is 0.658
+train_search.py line 246 2020-03-14 16:36:58,511 DARTS.train INFO: epoch 22: 306/349 with loss is 2.77536 and acc is 0.692
+train_search.py line 246 2020-03-14 16:38:42,419 DARTS.train INFO: epoch 22: 340/349 with loss is 2.32281 and acc is 0.750
+train_search.py line 248 2020-03-14 16:39:06,715 DARTS.train INFO: end epochs 22/120 with lr: 0.02306 and avg_time is: 95.472 ms
+train_search.py line 246 2020-03-14 16:40:51,286 DARTS.train INFO: epoch 23: 34/349 with loss is 6.26183 and acc is 0.399
+train_search.py line 246 2020-03-14 16:42:34,663 DARTS.train INFO: epoch 23: 68/349 with loss is 5.00236 and acc is 0.480
+train_search.py line 246 2020-03-14 16:44:17,849 DARTS.train INFO: epoch 23: 102/349 with loss is 4.27436 and acc is 0.542
+train_search.py line 246 2020-03-14 16:45:59,935 DARTS.train INFO: epoch 23: 136/349 with loss is 3.85124 and acc is 0.571
+train_search.py line 246 2020-03-14 16:47:43,023 DARTS.train INFO: epoch 23: 170/349 with loss is 3.69333 and acc is 0.586
+train_search.py line 246 2020-03-14 16:49:25,249 DARTS.train INFO: epoch 23: 204/349 with loss is 3.49027 and acc is 0.603
+train_search.py line 246 2020-03-14 16:51:07,349 DARTS.train INFO: epoch 23: 238/349 with loss is 3.44670 and acc is 0.623
+train_search.py line 246 2020-03-14 16:52:50,350 DARTS.train INFO: epoch 23: 272/349 with loss is 3.12959 and acc is 0.659
+train_search.py line 246 2020-03-14 16:54:32,640 DARTS.train INFO: epoch 23: 306/349 with loss is 2.73270 and acc is 0.705
+train_search.py line 246 2020-03-14 16:56:16,589 DARTS.train INFO: epoch 23: 340/349 with loss is 2.30778 and acc is 0.753
+train_search.py line 248 2020-03-14 16:56:41,249 DARTS.train INFO: end epochs 23/120 with lr: 0.02289 and avg_time is: 94.413 ms
+train_search.py line 246 2020-03-14 16:58:25,527 DARTS.train INFO: epoch 24: 34/349 with loss is 6.21989 and acc is 0.357
+train_search.py line 246 2020-03-14 17:00:08,066 DARTS.train INFO: epoch 24: 68/349 with loss is 4.89085 and acc is 0.475
+train_search.py line 246 2020-03-14 17:01:51,940 DARTS.train INFO: epoch 24: 102/349 with loss is 4.11684 and acc is 0.547
+train_search.py line 246 2020-03-14 17:03:35,220 DARTS.train INFO: epoch 24: 136/349 with loss is 3.73617 and acc is 0.582
+train_search.py line 246 2020-03-14 17:05:18,909 DARTS.train INFO: epoch 24: 170/349 with loss is 3.45737 and acc is 0.605
+train_search.py line 246 2020-03-14 17:07:02,856 DARTS.train INFO: epoch 24: 204/349 with loss is 3.23591 and acc is 0.632
+train_search.py line 246 2020-03-14 17:08:46,052 DARTS.train INFO: epoch 24: 238/349 with loss is 3.11243 and acc is 0.656
+train_search.py line 246 2020-03-14 17:10:29,235 DARTS.train INFO: epoch 24: 272/349 with loss is 2.77647 and acc is 0.690
+train_search.py line 246 2020-03-14 17:12:12,925 DARTS.train INFO: epoch 24: 306/349 with loss is 2.52592 and acc is 0.721
+train_search.py line 246 2020-03-14 17:13:56,448 DARTS.train INFO: epoch 24: 340/349 with loss is 2.08805 and acc is 0.782
+train_search.py line 248 2020-03-14 17:14:14,768 DARTS.train INFO: end epochs 24/120 with lr: 0.02271 and avg_time is: 94.867 ms
+train_search.py line 246 2020-03-14 17:15:59,117 DARTS.train INFO: epoch 25: 34/349 with loss is 6.38535 and acc is 0.371
+train_search.py line 246 2020-03-14 17:17:42,713 DARTS.train INFO: epoch 25: 68/349 with loss is 4.95662 and acc is 0.494
+train_search.py line 246 2020-03-14 17:19:25,674 DARTS.train INFO: epoch 25: 102/349 with loss is 4.13328 and acc is 0.554
+train_search.py line 246 2020-03-14 17:21:08,894 DARTS.train INFO: epoch 25: 136/349 with loss is 3.64263 and acc is 0.597
+train_search.py line 246 2020-03-14 17:22:51,680 DARTS.train INFO: epoch 25: 170/349 with loss is 3.45600 and acc is 0.619
+train_search.py line 246 2020-03-14 17:24:35,877 DARTS.train INFO: epoch 25: 204/349 with loss is 3.05884 and acc is 0.663
+train_search.py line 246 2020-03-14 17:26:20,785 DARTS.train INFO: epoch 25: 238/349 with loss is 2.93668 and acc is 0.681
+train_search.py line 246 2020-03-14 17:28:05,503 DARTS.train INFO: epoch 25: 272/349 with loss is 2.71306 and acc is 0.708
+train_search.py line 246 2020-03-14 17:29:49,875 DARTS.train INFO: epoch 25: 306/349 with loss is 2.45688 and acc is 0.733
+train_search.py line 246 2020-03-14 17:31:33,886 DARTS.train INFO: epoch 25: 340/349 with loss is 2.09070 and acc is 0.779
+train_search.py line 248 2020-03-14 17:31:52,352 DARTS.train INFO: end epochs 25/120 with lr: 0.02252 and avg_time is: 95.231 ms
+train_search.py line 246 2020-03-14 17:33:35,784 DARTS.train INFO: epoch 26: 34/349 with loss is 5.19810 and acc is 0.421
+train_search.py line 246 2020-03-14 17:35:17,836 DARTS.train INFO: epoch 26: 68/349 with loss is 4.17659 and acc is 0.522
+train_search.py line 246 2020-03-14 17:37:02,174 DARTS.train INFO: epoch 26: 102/349 with loss is 3.68253 and acc is 0.582
+train_search.py line 246 2020-03-14 17:38:44,948 DARTS.train INFO: epoch 26: 136/349 with loss is 3.39410 and acc is 0.615
+train_search.py line 246 2020-03-14 17:40:27,811 DARTS.train INFO: epoch 26: 170/349 with loss is 3.08842 and acc is 0.648
+train_search.py line 246 2020-03-14 17:42:11,466 DARTS.train INFO: epoch 26: 204/349 with loss is 2.82919 and acc is 0.673
+train_search.py line 246 2020-03-14 17:43:54,003 DARTS.train INFO: epoch 26: 238/349 with loss is 2.57546 and acc is 0.704
+train_search.py line 246 2020-03-14 17:45:36,758 DARTS.train INFO: epoch 26: 272/349 with loss is 2.64981 and acc is 0.699
+train_search.py line 246 2020-03-14 17:47:20,520 DARTS.train INFO: epoch 26: 306/349 with loss is 2.26061 and acc is 0.742
+train_search.py line 246 2020-03-14 17:49:02,294 DARTS.train INFO: epoch 26: 340/349 with loss is 1.93756 and acc is 0.785
+train_search.py line 248 2020-03-14 17:49:20,315 DARTS.train INFO: end epochs 26/120 with lr: 0.02233 and avg_time is: 94.370 ms
+train_search.py line 246 2020-03-14 17:51:00,554 DARTS.train INFO: epoch 27: 34/349 with loss is 3.44749 and acc is 0.592
+train_search.py line 246 2020-03-14 17:52:38,761 DARTS.train INFO: epoch 27: 68/349 with loss is 3.32745 and acc is 0.608
+train_search.py line 246 2020-03-14 17:54:17,440 DARTS.train INFO: epoch 27: 102/349 with loss is 3.09944 and acc is 0.635
+train_search.py line 246 2020-03-14 17:55:56,142 DARTS.train INFO: epoch 27: 136/349 with loss is 2.92593 and acc is 0.667
+train_search.py line 246 2020-03-14 17:57:35,001 DARTS.train INFO: epoch 27: 170/349 with loss is 2.91922 and acc is 0.662
+train_search.py line 246 2020-03-14 17:59:14,054 DARTS.train INFO: epoch 27: 204/349 with loss is 2.76898 and acc is 0.687
+train_search.py line 246 2020-03-14 18:00:54,158 DARTS.train INFO: epoch 27: 238/349 with loss is 2.58631 and acc is 0.707
+train_search.py line 246 2020-03-14 18:02:35,399 DARTS.train INFO: epoch 27: 272/349 with loss is 2.42766 and acc is 0.720
+train_search.py line 246 2020-03-14 18:04:14,847 DARTS.train INFO: epoch 27: 306/349 with loss is 2.26369 and acc is 0.750
+train_search.py line 246 2020-03-14 18:05:53,438 DARTS.train INFO: epoch 27: 340/349 with loss is 1.91615 and acc is 0.796
+train_search.py line 248 2020-03-14 18:06:11,132 DARTS.train INFO: end epochs 27/120 with lr: 0.02212 and avg_time is: 91.024 ms
+train_search.py line 246 2020-03-14 18:07:50,409 DARTS.train INFO: epoch 28: 34/349 with loss is 4.46681 and acc is 0.483
+train_search.py line 246 2020-03-14 18:09:28,896 DARTS.train INFO: epoch 28: 68/349 with loss is 3.64593 and acc is 0.574
+train_search.py line 246 2020-03-14 18:11:07,509 DARTS.train INFO: epoch 28: 102/349 with loss is 3.23181 and acc is 0.625
+train_search.py line 246 2020-03-14 18:12:47,948 DARTS.train INFO: epoch 28: 136/349 with loss is 3.01268 and acc is 0.658
+train_search.py line 246 2020-03-14 18:14:28,582 DARTS.train INFO: epoch 28: 170/349 with loss is 2.89160 and acc is 0.670
+train_search.py line 246 2020-03-14 18:16:08,528 DARTS.train INFO: epoch 28: 204/349 with loss is 2.58410 and acc is 0.705
+train_search.py line 246 2020-03-14 18:17:49,624 DARTS.train INFO: epoch 28: 238/349 with loss is 2.43333 and acc is 0.719
+train_search.py line 246 2020-03-14 18:19:30,688 DARTS.train INFO: epoch 28: 272/349 with loss is 2.26797 and acc is 0.741
+train_search.py line 246 2020-03-14 18:21:11,553 DARTS.train INFO: epoch 28: 306/349 with loss is 2.14702 and acc is 0.757
+train_search.py line 246 2020-03-14 18:22:52,999 DARTS.train INFO: epoch 28: 340/349 with loss is 1.76277 and acc is 0.810
+train_search.py line 248 2020-03-14 18:23:13,847 DARTS.train INFO: end epochs 28/120 with lr: 0.02192 and avg_time is: 91.825 ms
+train_search.py line 246 2020-03-14 18:24:56,013 DARTS.train INFO: epoch 29: 34/349 with loss is 3.58198 and acc is 0.549
+train_search.py line 246 2020-03-14 18:26:36,125 DARTS.train INFO: epoch 29: 68/349 with loss is 3.35035 and acc is 0.595
+train_search.py line 246 2020-03-14 18:28:17,052 DARTS.train INFO: epoch 29: 102/349 with loss is 3.15157 and acc is 0.624
+train_search.py line 246 2020-03-14 18:29:58,414 DARTS.train INFO: epoch 29: 136/349 with loss is 2.92235 and acc is 0.660
+train_search.py line 246 2020-03-14 18:31:39,815 DARTS.train INFO: epoch 29: 170/349 with loss is 2.65729 and acc is 0.686
+train_search.py line 246 2020-03-14 18:33:20,827 DARTS.train INFO: epoch 29: 204/349 with loss is 2.55637 and acc is 0.700
+train_search.py line 246 2020-03-14 18:35:02,405 DARTS.train INFO: epoch 29: 238/349 with loss is 2.50024 and acc is 0.704
+train_search.py line 246 2020-03-14 18:36:42,975 DARTS.train INFO: epoch 29: 272/349 with loss is 2.27083 and acc is 0.736
+train_search.py line 246 2020-03-14 18:38:24,934 DARTS.train INFO: epoch 29: 306/349 with loss is 2.13936 and acc is 0.762
+train_search.py line 246 2020-03-14 18:40:07,568 DARTS.train INFO: epoch 29: 340/349 with loss is 1.77021 and acc is 0.808
+train_search.py line 248 2020-03-14 18:40:31,264 DARTS.train INFO: end epochs 29/120 with lr: 0.02170 and avg_time is: 92.869 ms
+train_search.py line 246 2020-03-14 18:42:13,986 DARTS.train INFO: epoch 30: 34/349 with loss is 4.42965 and acc is 0.491
+train_search.py line 246 2020-03-14 18:43:58,083 DARTS.train INFO: epoch 30: 68/349 with loss is 3.55546 and acc is 0.585
+train_search.py line 246 2020-03-14 18:45:42,921 DARTS.train INFO: epoch 30: 102/349 with loss is 3.03024 and acc is 0.650
+train_search.py line 246 2020-03-14 18:47:28,230 DARTS.train INFO: epoch 30: 136/349 with loss is 2.75461 and acc is 0.677
+train_search.py line 246 2020-03-14 18:49:13,793 DARTS.train INFO: epoch 30: 170/349 with loss is 2.60762 and acc is 0.703
+train_search.py line 246 2020-03-14 18:51:00,337 DARTS.train INFO: epoch 30: 204/349 with loss is 2.41918 and acc is 0.720
+train_search.py line 246 2020-03-14 18:52:48,310 DARTS.train INFO: epoch 30: 238/349 with loss is 2.21599 and acc is 0.744
+train_search.py line 246 2020-03-14 18:54:34,101 DARTS.train INFO: epoch 30: 272/349 with loss is 2.30635 and acc is 0.740
+train_search.py line 246 2020-03-14 18:56:23,240 DARTS.train INFO: epoch 30: 306/349 with loss is 2.03857 and acc is 0.771
+train_search.py line 246 2020-03-14 18:58:09,606 DARTS.train INFO: epoch 30: 340/349 with loss is 1.66397 and acc is 0.822
+train_search.py line 248 2020-03-14 18:58:28,273 DARTS.train INFO: end epochs 30/120 with lr: 0.02149 and avg_time is: 96.967 ms
+train_search.py line 246 2020-03-14 19:00:15,898 DARTS.train INFO: epoch 31: 34/349 with loss is 3.28946 and acc is 0.607
+train_search.py line 246 2020-03-14 19:02:03,752 DARTS.train INFO: epoch 31: 68/349 with loss is 2.91480 and acc is 0.656
+train_search.py line 246 2020-03-14 19:03:53,190 DARTS.train INFO: epoch 31: 102/349 with loss is 2.69968 and acc is 0.677
+train_search.py line 246 2020-03-14 19:05:39,908 DARTS.train INFO: epoch 31: 136/349 with loss is 2.51629 and acc is 0.707
+train_search.py line 246 2020-03-14 19:07:27,774 DARTS.train INFO: epoch 31: 170/349 with loss is 2.32664 and acc is 0.733
+train_search.py line 246 2020-03-14 19:09:13,978 DARTS.train INFO: epoch 31: 204/349 with loss is 2.32434 and acc is 0.734
+train_search.py line 246 2020-03-14 19:11:05,913 DARTS.train INFO: epoch 31: 238/349 with loss is 2.20974 and acc is 0.749
+train_search.py line 246 2020-03-14 19:12:53,035 DARTS.train INFO: epoch 31: 272/349 with loss is 2.14750 and acc is 0.759
+train_search.py line 246 2020-03-14 19:14:40,802 DARTS.train INFO: epoch 31: 306/349 with loss is 1.98567 and acc is 0.777
+train_search.py line 246 2020-03-14 19:16:27,649 DARTS.train INFO: epoch 31: 340/349 with loss is 1.70040 and acc is 0.817
+train_search.py line 248 2020-03-14 19:16:49,637 DARTS.train INFO: end epochs 31/120 with lr: 0.02126 and avg_time is: 98.897 ms
+train_search.py line 246 2020-03-14 19:18:38,778 DARTS.train INFO: epoch 32: 34/349 with loss is 4.96023 and acc is 0.579
+train_search.py line 246 2020-03-14 19:20:23,966 DARTS.train INFO: epoch 32: 68/349 with loss is 3.63876 and acc is 0.654
+train_search.py line 246 2020-03-14 19:22:11,400 DARTS.train INFO: epoch 32: 102/349 with loss is 3.02024 and acc is 0.690
+train_search.py line 246 2020-03-14 19:23:56,995 DARTS.train INFO: epoch 32: 136/349 with loss is 2.70260 and acc is 0.705
+train_search.py line 246 2020-03-14 19:25:43,119 DARTS.train INFO: epoch 32: 170/349 with loss is 2.63801 and acc is 0.716
+train_search.py line 246 2020-03-14 19:27:30,901 DARTS.train INFO: epoch 32: 204/349 with loss is 2.36813 and acc is 0.736
+train_search.py line 246 2020-03-14 19:29:17,853 DARTS.train INFO: epoch 32: 238/349 with loss is 2.15038 and acc is 0.761
+train_search.py line 246 2020-03-14 19:31:03,715 DARTS.train INFO: epoch 32: 272/349 with loss is 2.07500 and acc is 0.769
+train_search.py line 246 2020-03-14 19:32:51,220 DARTS.train INFO: epoch 32: 306/349 with loss is 1.78070 and acc is 0.804
+train_search.py line 246 2020-03-14 19:34:38,474 DARTS.train INFO: epoch 32: 340/349 with loss is 1.56343 and acc is 0.835
+train_search.py line 248 2020-03-14 19:35:03,684 DARTS.train INFO: end epochs 32/120 with lr: 0.02103 and avg_time is: 97.951 ms
+train_search.py line 246 2020-03-14 19:36:51,341 DARTS.train INFO: epoch 33: 34/349 with loss is 3.91994 and acc is 0.486
+train_search.py line 246 2020-03-14 19:38:38,101 DARTS.train INFO: epoch 33: 68/349 with loss is 3.21171 and acc is 0.604
+train_search.py line 246 2020-03-14 19:40:26,045 DARTS.train INFO: epoch 33: 102/349 with loss is 2.84452 and acc is 0.656
+train_search.py line 246 2020-03-14 19:42:12,512 DARTS.train INFO: epoch 33: 136/349 with loss is 2.63719 and acc is 0.682
+train_search.py line 246 2020-03-14 19:43:55,545 DARTS.train INFO: epoch 33: 170/349 with loss is 2.37149 and acc is 0.726
+train_search.py line 246 2020-03-14 19:45:36,232 DARTS.train INFO: epoch 33: 204/349 with loss is 2.28819 and acc is 0.737
+train_search.py line 246 2020-03-14 19:47:21,253 DARTS.train INFO: epoch 33: 238/349 with loss is 1.91074 and acc is 0.783
+train_search.py line 246 2020-03-14 19:49:02,751 DARTS.train INFO: epoch 33: 272/349 with loss is 1.83503 and acc is 0.795
+train_search.py line 246 2020-03-14 19:50:43,904 DARTS.train INFO: epoch 33: 306/349 with loss is 1.70931 and acc is 0.809
+train_search.py line 246 2020-03-14 19:52:25,507 DARTS.train INFO: epoch 33: 340/349 with loss is 1.54819 and acc is 0.842
+train_search.py line 248 2020-03-14 19:52:46,742 DARTS.train INFO: end epochs 33/120 with lr: 0.02079 and avg_time is: 95.448 ms
+train_search.py line 246 2020-03-14 19:54:27,595 DARTS.train INFO: epoch 34: 34/349 with loss is 4.12467 and acc is 0.504
+train_search.py line 246 2020-03-14 19:56:06,909 DARTS.train INFO: epoch 34: 68/349 with loss is 3.14865 and acc is 0.622
+train_search.py line 246 2020-03-14 19:57:47,585 DARTS.train INFO: epoch 34: 102/349 with loss is 2.78449 and acc is 0.674
+train_search.py line 246 2020-03-14 19:59:27,731 DARTS.train INFO: epoch 34: 136/349 with loss is 2.44764 and acc is 0.713
+train_search.py line 246 2020-03-14 20:01:08,281 DARTS.train INFO: epoch 34: 170/349 with loss is 2.29702 and acc is 0.733
+train_search.py line 246 2020-03-14 20:02:48,725 DARTS.train INFO: epoch 34: 204/349 with loss is 2.10775 and acc is 0.758
+train_search.py line 246 2020-03-14 20:04:29,239 DARTS.train INFO: epoch 34: 238/349 with loss is 2.09092 and acc is 0.761
+train_search.py line 246 2020-03-14 20:06:12,171 DARTS.train INFO: epoch 34: 272/349 with loss is 1.85177 and acc is 0.789
+train_search.py line 246 2020-03-14 20:07:52,101 DARTS.train INFO: epoch 34: 306/349 with loss is 1.62798 and acc is 0.814
+train_search.py line 246 2020-03-14 20:09:32,105 DARTS.train INFO: epoch 34: 340/349 with loss is 1.43241 and acc is 0.839
+train_search.py line 248 2020-03-14 20:09:52,645 DARTS.train INFO: end epochs 34/120 with lr: 0.02055 and avg_time is: 92.113 ms
+train_search.py line 246 2020-03-14 20:11:34,815 DARTS.train INFO: epoch 35: 34/349 with loss is 4.52908 and acc is 0.478
+train_search.py line 246 2020-03-14 20:13:14,225 DARTS.train INFO: epoch 35: 68/349 with loss is 3.44006 and acc is 0.603
+train_search.py line 246 2020-03-14 20:19:50,049 DARTS.train INFO: epoch 35: 102/349 with loss is 2.81649 and acc is 0.678
+train_search.py line 246 2020-03-14 20:29:10,306 DARTS.train INFO: epoch 35: 136/349 with loss is 2.39727 and acc is 0.724
+train_search.py line 246 2020-03-14 20:38:26,974 DARTS.train INFO: epoch 35: 170/349 with loss is 2.12678 and acc is 0.760
+train_search.py line 246 2020-03-14 20:47:45,731 DARTS.train INFO: epoch 35: 204/349 with loss is 2.16187 and acc is 0.754
+train_search.py line 246 2020-03-14 20:57:07,118 DARTS.train INFO: epoch 35: 238/349 with loss is 1.86137 and acc is 0.786
+train_search.py line 246 2020-03-14 21:06:24,531 DARTS.train INFO: epoch 35: 272/349 with loss is 1.69807 and acc is 0.811
+train_search.py line 246 2020-03-14 21:15:42,101 DARTS.train INFO: epoch 35: 306/349 with loss is 1.61193 and acc is 0.822
+train_search.py line 246 2020-03-14 21:24:59,757 DARTS.train INFO: epoch 35: 340/349 with loss is 1.37729 and acc is 0.851
+train_search.py line 248 2020-03-14 21:26:38,473 DARTS.train INFO: end epochs 35/120 with lr: 0.02031 and avg_time is: 415.623 ms
+train_search.py line 246 2020-03-14 21:35:56,447 DARTS.train INFO: epoch 36: 34/349 with loss is 4.38639 and acc is 0.473
+train_search.py line 246 2020-03-14 21:45:12,854 DARTS.train INFO: epoch 36: 68/349 with loss is 3.21544 and acc is 0.618
+train_search.py line 246 2020-03-14 21:54:31,200 DARTS.train INFO: epoch 36: 102/349 with loss is 2.61916 and acc is 0.696
+train_search.py line 246 2020-03-14 22:03:48,478 DARTS.train INFO: epoch 36: 136/349 with loss is 2.35559 and acc is 0.729
+train_search.py line 246 2020-03-14 22:13:05,743 DARTS.train INFO: epoch 36: 170/349 with loss is 2.23293 and acc is 0.739
+train_search.py line 246 2020-03-14 22:22:23,788 DARTS.train INFO: epoch 36: 204/349 with loss is 2.07361 and acc is 0.762

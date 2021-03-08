@@ -1,0 +1,80 @@
+MODEL:
+  DEVICE: 'cpu'
+  NAME: 'ssnet'
+  PRETRAIN_PATH: 'D:/project/data/server/checkpoints/'
+  IMAGENET_CKPT: ''
+  USE_BNNECK: True
+  PARALLEL: False
+  NECK: True
+  PCB_NECK: False
+  BEFORE_GAP: True
+  MID_PLANES: 256
+  EXTEND_PLANES: 0
+
+TRICKS:
+  LABEL_SMOOTH: True
+  LAST_STRIDE: 2
+  DROPOUT: 0.0
+
+
+DATASET:
+  NAME: 'market1501'
+  # NAME: 'dukemtmc'
+
+DATA:
+  IMAGE_SIZE: [256,128]
+  HF_PROB: 0.5
+  RE_PROB: 0.5
+  MEAN: [0.485, 0.456, 0.406]
+  STD: [0.229, 0.224, 0.225]
+  PADDING: 10
+
+DATALOADER:
+  NUM_WORKERS: 4
+  SAMPLER: 'triplet'
+  NUM_INSTANCE: 4
+
+SOLVER:
+  MAX_EPOCHS: 160
+  END_EPOCH: 160
+  IMGS_PER_BATCH: 64
+
+  # BASE_LR: 3.5e-4
+  BASE_LR: 0.025
+  LR_DECAY_PERIOD: 40
+  LR_DECAY_FACTOR: 0.1
+  # LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  LR_SCHEDULER_NAME: "WarmupCosAnnLR"
+  LR_MIN: 0.001
+  WARMUP_ITERS: 10
+  WARMUP_FACTOR: 1.0
+
+  OPTIMIZER_NAME: "SGD"
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.0005
+
+  LOSS_NAME: "softmax_triplet"
+  TRI_MARGIN: 0.3
+
+TEST:
+  IMGS_PER_BATCH: 128
+  FEAT_NORM: 'yes'
+  BEST_CKPT: "best_ckpt.pth"
+
+OUTPUT:
+  ROOT_DIR: "D:/project/data/server/checkpoints/"
+  CKPT_DIR: "checkpoints/ssnetv4_neck_dw_ff_fa_kc_bn_ws_wd0005_drop03_e160/"
+  LOG_PERIOD: 10
+  LOG_NAME: 'log_ssnetv4_neck_dw_fa_ff_kc_bn_ws_wd0005_drop03_e160.txt'
+  CHECKPOINT_PERIOD: 20
+  EVAL_PERIOD: 20
+
+DARTS:
+  IN_PLANES: 60
+  LAYERS: [3, 4, 6, 3]
+  GENOTYPE: 'v4_best_genotype.json'
+  CKPT_NAME: 'best_ckpt_fit.pth'
+  PRETRAINED: False
+  GRAD_CLIP: 5.
+  MULTIPLIER: 2
+  USE_ATTENTION: True

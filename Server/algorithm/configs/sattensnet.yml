@@ -1,0 +1,50 @@
+MODEL:
+  DEVICE: 'cpu'
+  NAME: 'simple_attensnet'
+  PRETRAIN_PATH: ''
+  USE_BNNECK: "yes"
+
+DATASET:
+  NAME: 'market1501'
+
+DATA:
+  IMAGE_SIZE: [256,128]
+  HF_PROB: 0.5
+  RE_PROB: 0.5
+  MEAN: [0.485, 0.456, 0.406]
+  STD: [0.229, 0.224, 0.225]
+  PADDING: 10
+
+DATALOADER:
+  NUM_WORKERS: 8
+  SAMPLER: 'triplet'
+  NUM_INSTANCE: 4
+
+SOLVER:
+  MAX_EPOCHS: 40
+  IMGS_PER_BATCH: 64
+
+  BASE_LR: 0.01
+  LR_DECAY_PERIOD: 10
+  LR_DECAY_FACTOR: 0.1
+  LR_SCHEDULER_NAME: "StepLR"
+
+  OPTIMIZER_NAME: "SGD"
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.005
+
+  LOSS_NAME: "softmax_triplet"
+  TRI_MARGIN: 0.3
+
+TEST:
+  IMGS_PER_BATCH: 128
+  FEAT_NORM: 'yes'
+  BEST_CKPT: "best_ckpt.pth"
+
+OUTPUT:
+  # ROOT_DIR: "/home/share/solicucu/data/ReID/MobileNetReID/darts1"
+  # CKPT_DIR: "checkpoints/darts1/"
+  LOG_PERIOD: 10
+  LOG_NAME: 'log_simple_attensnet_pretrained.txt'
+  CHECKPOINT_PERIOD: 20
+  EVAL_PERIOD: 10

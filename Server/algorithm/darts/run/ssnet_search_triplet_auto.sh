@@ -1,0 +1,21 @@
+python ../train_search.py \
+--device 'cuda' \
+--device_ids '2' \
+--num_instance 4 \
+--batch_size 32 \
+--in_planes 60 \
+--max_epochs 200 \
+--base_lr 0.1 \
+--lr_min 0.001 \
+--arch_lr 0.02 \
+--arch_weight_decay 0.0005 \
+--weight_decay 0.0005 \
+--model_name 'ssnet' \
+--loss_name 'softmax_triplet' \
+--log_name 'log_ssnet_atten_softmax_triplet_search_auto.txt' \
+--eval_period 40 \
+--ckpt_period 40 \
+--dataset_dir '/home/share/solicucu/data/' \
+--output_dir '/home/share/solicucu/data/ReID/MobileNetReID/ssnet/' \
+--ckpt_dir "checkpoints/search_atten_softmax_triplet_auto/" 
+#--pretrained '/home/share/solicucu/data/ReID/MobileNetReID/darts/darts1/checkpoints/atten/'
